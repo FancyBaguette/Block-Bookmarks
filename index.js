@@ -146,7 +146,7 @@ function renderBookmarks(container, list) {
             `
                 <a href="https://${bookmarksArray[i].url}" class="bookmark-block" data-index="${i}">
                     <h2>${bookmarksArray[i].title}</h2>
-                    <img class="bookmark-block-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadAltIcon(this)">
+                    <img class="bookmark-block-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadWhiteAltIcon(this)">
             `;
             
             list.innerHTML +=
@@ -155,7 +155,7 @@ function renderBookmarks(container, list) {
                     <div style="display:flex;"> 
                         <div class="list-item-index">${i+1}.</div> 
                         <div class="list-item-body">
-                            <div style="display:flex;"><img class="list-item-icon" src="https://${bookmarksArray[i].url}/favicon.ico" alt="${bookmarksArray[i].title}"><h3>${bookmarksArray[i].title}</h3></div> <br> <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
+                            <div style="display:flex;"><img class="list-item-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadBlackAltIcon(this)"><h3>${bookmarksArray[i].title}</h3></div> <br> <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
                         </div> 
                     </div> 
                     <button class="remove-bookmark-btn">Remove</button>
@@ -186,6 +186,10 @@ renderBookmarks(bookmarksContainer, bookmarksList);
 
 // Rendering an icon when bookmark block icon fails to load
 
-function loadAltIcon(e) {
-    e.src = "desktop-icon.svg";
+function loadWhiteAltIcon(e) {
+    e.src = "desktop-icon-white.svg";
+}
+
+function loadBlackAltIcon(e) {
+    e.src = "desktop-icon-black.svg";
 }
