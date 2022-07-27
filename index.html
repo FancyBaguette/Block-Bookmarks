@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Bookmarks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="root">
+        <header class="header">
+            <h1>Block Bookmarks</h1>
+            <div class="actions-container">
+                <button class="header-btn new-bookmark-btn">Add a new bookmark</button>
+                <button class="header-btn wipe-bookmarks-btn">Wipe all bookmarks</button>
+            </div>
+        </header>
+
+        <main class="bookmarks-container"></main>
+
+        <!-- Dialogs -->
+
+        <dialog class="new-bookmark-modal">
+            <header class="modal-header">
+                <h1>Add a new bookmark</h1>
+                <button class="header-btn new-bookmark-modal-close">X</button>
+            </header>
+            <div class="modal-actions">
+                <div class="modal-inputs">
+                    <label for="new-bookmark-url-input">Enter the desired URL</label>
+                    <label for="new-bookmark-title-input">Enter the bookmark's title</label>
+                </div>
+                <div class="modal-inputs">
+                    <input type="text" class="new-bookmark-url-input" id="new-bookmark-url-input" placeholder="For example: google.com \\ HTTPS prefix is automatically applied">
+                    <input type="text" class="new-bookmark-title-input" id="new-bookmark-title-input" maxlength="32">
+                    <button class="new-bookmark-submit">Add</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog class="wipe-bookmarks-modal">
+            <header class="modal-header">
+                <h1>Wipe all bookmarks</h1>
+                <button class="header-btn wipe-bookmarks-modal-close">X</button>
+            </header>
+            <span class="warning">WARNING! This will remove all of your current bookmarks!</span>
+            <div class="modal-actions">
+                <label for="wipe-all-bookmarks-confirmation">Type "I Understand" to continue</label>
+                <div class="modal-inputs">
+                    <input type="text" class="wipe-all-bookmarks-confirmation" id="wipe-all-bookmarks-confirmation">
+                    <button class="wipe-all-bookmarks-btn">WIPE</button>
+                </div>
+            </div>
+        </dialog>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
