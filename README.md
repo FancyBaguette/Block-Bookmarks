@@ -1,7 +1,8 @@
 # 🧱📚 Block Bookmarks
-Simple tool for easier site navigation in the steam overlay web browser
+Simple tool for easier site navigation in the steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay.
 
 ## Usage
+**Setup**
 1. Open up Steam settings
 2. Head to the "Web browser" section
 3. Change the web browser homepage URL to https://fancybaguette.github.io/block-bookmarks/
