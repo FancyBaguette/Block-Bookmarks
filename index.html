@@ -16,6 +16,7 @@
             <h1>Block Bookmarks</h1>
             <div class="actions-container">
                 <button class="header-btn new-bookmark-btn">Add a new bookmark</button>
+                <button class="manage-bookmarks-btn">Manage bookmarks</button>
                 <button class="header-btn wipe-bookmarks-btn">Wipe all bookmarks</button>
             </div>
         </header>
@@ -29,7 +30,7 @@
                 <h1>Add a new bookmark</h1>
                 <button class="header-btn new-bookmark-modal-close">X</button>
             </header>
-            <div class="modal-actions">
+            <div class="modal-body">
                 <div class="modal-inputs">
                     <label for="new-bookmark-url-input">Enter the desired URL</label>
                     <label for="new-bookmark-title-input">Enter the bookmark's title</label>
@@ -42,13 +43,23 @@
             </div>
         </dialog>
 
+        <dialog class="manage-bookmarks-modal">
+            <header class="modal-header">
+                <h1>Manage your bookmarks</h1>
+                <button class="header-btn manage-bookmarks-modal-close">X</button>
+            </header>
+            <div class="modal-body">
+                <div class="bookmarks-list"></div>
+            </div>
+        </dialog>
+
         <dialog class="wipe-bookmarks-modal">
             <header class="modal-header">
                 <h1>Wipe all bookmarks</h1>
                 <button class="header-btn wipe-bookmarks-modal-close">X</button>
             </header>
             <span class="warning">WARNING! This will remove all of your current bookmarks!</span>
-            <div class="modal-actions">
+            <div class="modal-body">
                 <label for="wipe-all-bookmarks-confirmation">Type "I Understand" to continue</label>
                 <div class="modal-inputs">
                     <input type="text" class="wipe-all-bookmarks-confirmation" id="wipe-all-bookmarks-confirmation">

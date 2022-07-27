@@ -1,24 +1,26 @@
 const bookmarksContainer = document.querySelector(".bookmarks-container");
+const bookmarksList = document.querySelector(".bookmarks-list");
 
 let bookmarksArray = [];
 let localStorageBookmarks = JSON.parse(localStorage.getItem("myBookmarks"));
 
 if (localStorageBookmarks) {
-    console.log("localstoragebookmarks = truthy")
-    console.log(localStorageBookmarks);
     bookmarksArray = localStorageBookmarks;
-    renderBookmarks(bookmarksArray);
+    renderBookmarks(bookmarksArray, bookmarksList);
 }
 
 // Modals
 
-const addNewBookmarkModalBtn = document.querySelector(".new-bookmark-btn");
-const wipeAllBookmarksModalBtn = document.querySelector(".wipe-bookmarks-btn");
-
 const addNewBookmarkModal = document.querySelector(".new-bookmark-modal");
+const manageBookmarksModal = document.querySelector(".manage-bookmarks-modal");
 const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
+const addNewBookmarkModalBtn = document.querySelector(".new-bookmark-btn");
+const manageBookmarksModalBtn = document.querySelector(".manage-bookmarks-btn");
+const wipeAllBookmarksModalBtn = document.querySelector(".wipe-bookmarks-btn");
+
 const closeNewBookmarkModalBtn = document.querySelector(".new-bookmark-modal-close");
+const closeManageBookmarksBtn = document.querySelector(".manage-bookmarks-modal-close");
 const closeWipeAllBookmarksModalBtn = document.querySelector('.wipe-bookmarks-modal-close');
 
 function openModal(modal) {
@@ -34,6 +36,17 @@ addNewBookmarkModalBtn.addEventListener("click", () => {
 })
 wipeAllBookmarksModalBtn.addEventListener("click", () => {
     openModal(wipeAllBookmarksModal);
+})
+
+manageBookmarksModalBtn.addEventListener("click", () => {
+    if (bookmarksArray.length > 0) {
+        openModal(manageBookmarksModal);
+    } else {
+        alert("Add some bookmarks first!");
+    }
+})
+closeManageBookmarksBtn.addEventListener("click", () => {
+    closeModal(manageBookmarksModal);
 })
 
 closeNewBookmarkModalBtn.addEventListener("click", () => {
@@ -67,7 +80,7 @@ function addNewBookmark(urlInput, titleInput) {
         bookmarksArray.push(newBookmark);
         localStorage.setItem("myBookmarks", JSON.stringify(bookmarksArray));
 
-        renderBookmarks(bookmarksContainer);
+        renderBookmarks(bookmarksContainer, bookmarksList);
     } else {
         let newBookmark =
         {
@@ -82,13 +95,22 @@ function addNewBookmark(urlInput, titleInput) {
         bookmarksArray.push(newBookmark);
         localStorage.setItem("myBookmarks", JSON.stringify(bookmarksArray));
 
-        renderBookmarks(bookmarksContainer);
+        renderBookmarks(bookmarksContainer, bookmarksList);
     }
 }
 
 addNewBookmarkBtn.addEventListener("click", () => {
     addNewBookmark(newBookmarkUrlInput, newBookmarkTitleInput);
 })
+   
+// Managing the bookmarks
+
+function removeBookmark(index) {
+    closeModal(manageBookmarksModal);
+    bookmarksArray.splice(index, 1);
+    localStorage.setItem("myBookmarks", JSON.stringify(bookmarksArray));
+    renderBookmarks(bookmarksContainer, bookmarksList);
+}
 
 // Removing all bookmarks
 
@@ -100,6 +122,7 @@ function wipeAllBookmarks(confirmationInput) {
         confirmationInput.value = "";
         bookmarksArray = [];
         localStorage.clear();
+        renderBookmarks(bookmarksContainer, bookmarksList);
         location.reload();
     } else {
         alert("Please make sure you typed in the confirmation text properly");
@@ -112,17 +135,42 @@ wipeAllBookmarksBtn.addEventListener("click", () => {
 
 // Rendering the bookmarks
 
-function renderBookmarks(container) {
+function renderBookmarks(container, list) {
     container.innerHTML = "";
+    list.innerHTML = "";
 
     if (bookmarksArray.length > 0) {
-        for (const bookmark of bookmarksArray) {
+        // Bookmarks container
+        for (let i = 0; i < bookmarksArray.length; i++) {
             container.innerHTML +=
             `
-                <a href="https://${bookmark.url}" class="bookmark-block">
-                    <h2>${bookmark.title}</h2>
-                    <span class="bookmark-block-letter">${bookmark.title.charAt(0)}</span>
+                <a href="https://${bookmarksArray[i].url}" class="bookmark-block" data-index="${i}">
+                    <h2>${bookmarksArray[i].title}</h2>
+                    <img class="bookmark-block-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadAltIcon(this)">
             `;
+            
+            list.innerHTML +=
+            `
+                <div class="list-item">
+                    <div style="display:flex;"> 
+                        <div class="list-item-index">${i+1}.</div> 
+                        <div class="list-item-body">
+                            <div style="display:flex;"><img class="list-item-icon" src="https://${bookmarksArray[i].url}/favicon.ico" alt="${bookmarksArray[i].title}"><h3>${bookmarksArray[i].title}</h3></div> <br> <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
+                        </div> 
+                    </div> 
+                    <button class="remove-bookmark-btn">Remove</button>
+                </div>
+            `;
+        }
+
+        const removeBtns = document.querySelectorAll(".remove-bookmark-btn");
+
+        for (let i = 0; i < bookmarksArray.length; i++) {
+            console.log("dasdas")
+            removeBtns[i].addEventListener("click", () => {
+                removeBookmark(i);
+                renderBookmarks(bookmarksContainer, bookmarksList);
+            })
         }
     } else {
         container.innerHTML +=
@@ -134,4 +182,10 @@ function renderBookmarks(container) {
     }
 }
 
-renderBookmarks(bookmarksContainer);
+renderBookmarks(bookmarksContainer, bookmarksList);
+
+// Rendering an icon when bookmark block icon fails to load
+
+function loadAltIcon(e) {
+    e.src = "desktop-icon.svg";
+}
