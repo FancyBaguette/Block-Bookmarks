@@ -34,8 +34,8 @@ function closeModal(modal) {
 addNewBookmarkModalBtn.addEventListener("click", () => {
     openModal(addNewBookmarkModal);
 })
-wipeAllBookmarksModalBtn.addEventListener("click", () => {
-    openModal(wipeAllBookmarksModal);
+closeNewBookmarkModalBtn.addEventListener("click", () => {
+    closeModal(addNewBookmarkModal);
 })
 
 manageBookmarksModalBtn.addEventListener("click", () => {
@@ -49,8 +49,12 @@ closeManageBookmarksBtn.addEventListener("click", () => {
     closeModal(manageBookmarksModal);
 })
 
-closeNewBookmarkModalBtn.addEventListener("click", () => {
-    closeModal(addNewBookmarkModal);
+wipeAllBookmarksModalBtn.addEventListener("click", () => {
+    if (bookmarksArray.length > 0) {
+        openModal(wipeAllBookmarksModal);
+    } else {
+        alert("Add some bookmarks first!");
+    }
 })
 closeWipeAllBookmarksModalBtn.addEventListener("click", () => {
     closeModal(wipeAllBookmarksModal);

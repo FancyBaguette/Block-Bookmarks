@@ -153,6 +153,14 @@ body {
     padding: 1em 2em;
 }
 
+.bookmark-block h2 {
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	width: 236px;
+}
+
 .bookmark-block:hover,
 .bookmark-block:focus {
     background-color: hsla(0, 0%, 30%, 0.8);
