@@ -140,22 +140,28 @@ function renderBookmarks(container, list) {
     list.innerHTML = "";
 
     if (bookmarksArray.length > 0) {
-        // Bookmarks container
         for (let i = 0; i < bookmarksArray.length; i++) {
+            // Bookmarks container
             container.innerHTML +=
             `
-                <a href="https://${bookmarksArray[i].url}" class="bookmark-block" data-index="${i}">
+                <a href="https://${bookmarksArray[i].url}" class="bookmark-block" data-index="${i}" title="https://${bookmarksArray[i].url}">
                     <h2>${bookmarksArray[i].title}</h2>
                     <img class="bookmark-block-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadWhiteAltIcon(this)">
             `;
             
+            // Bookmark managing panel
             list.innerHTML +=
             `
                 <div class="list-item">
                     <div style="display:flex;"> 
                         <div class="list-item-index">${i+1}.</div> 
                         <div class="list-item-body">
-                            <div style="display:flex;"><img class="list-item-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadBlackAltIcon(this)"><h3>${bookmarksArray[i].title}</h3></div> <br> <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
+                            <div style="display:flex;">
+                                <img class="list-item-icon" src="https://${bookmarksArray[i].url}/favicon.ico" onerror="loadBlackAltIcon(this)">
+                                <h3>${bookmarksArray[i].title}</h3>
+                            </div> 
+                            <br> 
+                            <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
                         </div> 
                     </div> 
                     <button class="remove-bookmark-btn">Remove</button>
