@@ -66,17 +66,19 @@
                 <button class="modal-close-btn edit-bookmark-modal-close">X</button>
             </header>
             <div class="modal-body">
-                <div class="bookmark-info-container">
-                    <div class="modal-inputs">
+                <div class="modal-inputs">
+                    <div class="modal-inputs-row">
                         <label for="bookmark-info-container-title">Bookmark URL</label>
-                        <label for="bookmark-info-container-url" class="bookmark-info-container-url">Bookmark title</label>
-                    </div>
-                    <div class="modal-inputs">
                         <input type="text" class="bookmark-info-container-url-input"></input>
+                    </div>
+                    <div class="modal-inputs-row">
+                        <label for="bookmark-info-container-url" class="bookmark-info-container-url">Bookmark title</label>
                         <input type="text" class="bookmark-info-container-title-input"></input>
                     </div>
-                    <button class="bookmark-info-container-apply">Apply</button>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn bookmark-info-container-apply">Apply</button>
             </div>
         </dialog>
 

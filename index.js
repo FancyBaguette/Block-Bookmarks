@@ -145,7 +145,7 @@ function editBookmark(index) {
     bookmarkTitleInput.value = "";
     bookmarkUrlInput.value = "";
     bookmarkTitleInput.value = bookmarksArray[index].title;
-    bookmarkUrlInput.value = bookmarksArray[index].title;
+    bookmarkUrlInput.value = bookmarksArray[index].url;
 
     applyBtn.addEventListener("click", () => {
         bookmarksArray[index].title = bookmarkTitleInput.value;
