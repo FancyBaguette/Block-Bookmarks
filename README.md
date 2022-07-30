@@ -17,5 +17,7 @@ Entering the bookmark's URL is required. You're also given the option to enter t
 In the *Manage bookmarks* menu you can edit the URL and the title of a specific bookmark or remove it
 ### - Use the "Wipe all bookmarks" menu to permamently remove all of the current bookmarks
 The *Wipe all bookmarks* menu allows you to, as the name suggests, remove all of your bookmarks in a single click. You can of course also remove them one by one in the *Manage bookmarks* menu.
+
+A **Bookmark block** consists of the Bookmark's title and the bookmarked websites icon. If the icon fails to load it's replaced with a simple icon.
   
 ![How the app looks like](https://cdn.discordapp.com/attachments/972799878956716122/1003012952783331428/Bez_tytuu.png)
