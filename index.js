@@ -18,6 +18,7 @@ const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 const addNewBookmarkModalBtn = document.querySelector(".new-bookmark-btn");
 const manageBookmarksModalBtn = document.querySelector(".manage-bookmarks-btn");
+const addNewBookmarkModalLinkBtn = document.querySelector(".manage-bookmarks-modal .modal-footer .modal-btn");
 const wipeAllBookmarksModalBtn = document.querySelector(".wipe-bookmarks-btn");
 
 const closeNewBookmarkModalBtn = document.querySelector(".new-bookmark-modal-close");
@@ -36,16 +37,21 @@ function closeModal(modal) {
 addNewBookmarkModalBtn.addEventListener("click", () => {
     openModal(addNewBookmarkModal);
 })
+addNewBookmarkModalLinkBtn.addEventListener("click", () => {
+    closeModal(manageBookmarksModal);
+    openModal(addNewBookmarkModal);
+})
 closeNewBookmarkModalBtn.addEventListener("click", () => {
     closeModal(addNewBookmarkModal);
 })
 
 manageBookmarksModalBtn.addEventListener("click", () => {
-    if (bookmarksArray.length > 0) {
-        openModal(manageBookmarksModal);
-    } else {
-        alert("Add some bookmarks first!");
-    }
+    // if (bookmarksArray.length > 0) {
+    //     openModal(manageBookmarksModal);
+    // } else {
+    //     alert("Add some bookmarks first!");
+    // }
+    openModal(manageBookmarksModal);
 })
 closeManageBookmarksBtn.addEventListener("click", () => {
     closeModal(manageBookmarksModal);
@@ -200,7 +206,6 @@ function renderBookmarks(container, list) {
                                 <img class="list-item-icon" src="https://${getFavicon(bookmarksArray[i].url)}" onerror="loadBlackAltIcon(this)">
                                 <h3>${bookmarksArray[i].title}</h3>
                             </div> 
-                            <br> 
                             <a href="https://${bookmarksArray[i].url}">${bookmarksArray[i].url}</a>
                         </div> 
                     </div> 
@@ -238,7 +243,7 @@ function renderBookmarks(container, list) {
 
         list.innerHTML += 
         `
-            <p>You've deleted all of your bookmarks</p>
+            <p>You currently have no bookmarks. Click the button below to add a new one.</p>
         `
     }
 }
@@ -254,9 +259,9 @@ function getFavicon(url) {
 // Rendering an .SVG icon when bookmark block icon fails to load
 
 function loadWhiteAltIcon(e) {
-    e.src = "desktop-icon-white.svg";
+    e.src = "./svg/desktop-icon-white.svg";
 }
 
 function loadBlackAltIcon(e) {
-    e.src = "desktop-icon-black.svg";
+    e.src = "./svg/desktop-icon-black.svg";
 }

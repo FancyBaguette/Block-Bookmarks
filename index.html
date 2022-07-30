@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div class="root">
         <header class="header">
-            <h1>Block Bookmarks</h1>
+            <h1><span class="accent-text">Block</span> Bookmarks</h1>
             <div class="actions-container">
-                <button class="header-btn new-bookmark-btn">Add a new bookmark</button>
-                <button class="header-btn manage-bookmarks-btn">Manage bookmarks</button>
-                <button class="header-btn wipe-bookmarks-btn">Wipe all bookmarks</button>
+                <button class="new-bookmark-btn">Add a new bookmark</button>
+                <button class="manage-bookmarks-btn">Manage bookmarks</button>
+                <button class="wipe-bookmarks-btn">Wipe all bookmarks</button>
             </div>
         </header>
 
@@ -28,35 +28,42 @@
         <dialog class="new-bookmark-modal">
             <header class="modal-header">
                 <h1>Add a new bookmark</h1>
-                <button class="header-btn new-bookmark-modal-close">X</button>
+                <button class="modal-close-btn new-bookmark-modal-close">X</button>
             </header>
             <div class="modal-body">
                 <div class="modal-inputs">
-                    <label for="new-bookmark-url-input">Enter the desired URL</label>
-                    <label for="new-bookmark-title-input">Enter the bookmark's title (optional)</label>
+                    <div class="modal-inputs-row">
+                        <label for="new-bookmark-url-input">Enter the desired URL</label>
+                        <input type="text" class="new-bookmark-url-input" id="new-bookmark-url-input" placeholder="eg. 'google.com' or 'https://google.com'">
+                    </div>
+                    <div class="modal-inputs-row">
+                        <label for="new-bookmark-title-input">Enter the bookmark's title (optional)</label>
+                        <input type="text" class="new-bookmark-title-input" id="new-bookmark-title-input" maxlength="32">
+                    </div>
                 </div>
-                <div class="modal-inputs">
-                    <input type="text" class="new-bookmark-url-input" id="new-bookmark-url-input" placeholder="eg. 'google.com' or 'https://google.com'">
-                    <input type="text" class="new-bookmark-title-input" id="new-bookmark-title-input" maxlength="32">
-                    <button class="new-bookmark-submit">Add</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn new-bookmark-submit">Add</button>
             </div>
         </dialog>
 
         <dialog class="manage-bookmarks-modal">
             <header class="modal-header">
                 <h1>Manage your bookmarks</h1>
-                <button class="header-btn manage-bookmarks-modal-close">X</button>
+                <button class="modal-close-btn manage-bookmarks-modal-close">X</button>
             </header>
             <div class="modal-body">
                 <div class="bookmarks-list"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn">Add a new one</button>
             </div>
         </dialog>
 
         <dialog class="edit-bookmark-modal">
             <header class="modal-header">
                 <h1>Editing bookmark <span class="edit-bookmark-modal-index"></span></h1>
-                <button class="header-btn edit-bookmark-modal-close">X</button>
+                <button class="modal-close-btn edit-bookmark-modal-close">X</button>
             </header>
             <div class="modal-body">
                 <div class="bookmark-info-container">
@@ -76,15 +83,17 @@
         <dialog class="wipe-bookmarks-modal">
             <header class="modal-header">
                 <h1>Wipe all bookmarks</h1>
-                <button class="header-btn wipe-bookmarks-modal-close">X</button>
+                <button class="modal-close-btn wipe-bookmarks-modal-close">X</button>
             </header>
-            <span class="warning">WARNING! This will remove all of your current bookmarks!</span>
             <div class="modal-body">
+                <span class="warning">WARNING! This will remove all of your current bookmarks!</span>
                 <label for="wipe-all-bookmarks-confirmation">Type "I Understand" to continue</label>
                 <div class="modal-inputs">
                     <input type="text" class="wipe-all-bookmarks-confirmation" id="wipe-all-bookmarks-confirmation">
-                    <button class="wipe-all-bookmarks-btn">WIPE</button>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-warning wipe-all-bookmarks-btn">Wipe</button>
             </div>
         </dialog>
     </div>
