@@ -12,7 +12,7 @@ Simple tool for easier site navigation in the steam overlay web browser. I creat
 ## 📖 Usage
 Once you've set it up it doesn't really need explanation on how to use it
 ### - Use the "Add a new bookmark" menu to add a new bookmark
-Entering the bookmark's URL is required. You're also given the option to enter the bookmark's title although it isn't required. If you don't provide the title, the previously entered URL becomes the title.
+Entering the bookmark's URL is required. You're also given the option to enter the bookmark's title although it's optional. If you don't provide the title, the previously entered URL becomes the title.
 ### - Use the "Manage bookmarks" menu to edit and remove bookmarks
 In the *Manage bookmarks* menu you can edit the URL and the title of a specific bookmark or remove it
 ### - Use the "Wipe all bookmarks" menu to permamently remove all of the current bookmarks
