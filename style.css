@@ -87,9 +87,17 @@ body {
     justify-content: center;
 }
 
+/* Utility */
+
 .warning {
     color: red;
     font-weight: 700;
+}
+
+.flex-center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Typography */

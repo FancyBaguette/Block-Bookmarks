@@ -36,7 +36,7 @@
                     <label for="new-bookmark-title-input">Enter the bookmark's title (optional)</label>
                 </div>
                 <div class="modal-inputs">
-                    <input type="text" class="new-bookmark-url-input" id="new-bookmark-url-input" placeholder="For example: google.com \\ HTTPS prefix is automatically applied">
+                    <input type="text" class="new-bookmark-url-input" id="new-bookmark-url-input" placeholder="eg. 'google.com' or 'https://google.com'">
                     <input type="text" class="new-bookmark-title-input" id="new-bookmark-title-input" maxlength="32">
                     <button class="new-bookmark-submit">Add</button>
                 </div>
@@ -50,6 +50,26 @@
             </header>
             <div class="modal-body">
                 <div class="bookmarks-list"></div>
+            </div>
+        </dialog>
+
+        <dialog class="edit-bookmark-modal">
+            <header class="modal-header">
+                <h1>Editing bookmark <span class="edit-bookmark-modal-index"></span></h1>
+                <button class="header-btn edit-bookmark-modal-close">X</button>
+            </header>
+            <div class="modal-body">
+                <div class="bookmark-info-container">
+                    <div class="modal-inputs">
+                        <label for="bookmark-info-container-title">Bookmark URL</label>
+                        <label for="bookmark-info-container-url" class="bookmark-info-container-url">Bookmark title</label>
+                    </div>
+                    <div class="modal-inputs">
+                        <input type="text" class="bookmark-info-container-url-input"></input>
+                        <input type="text" class="bookmark-info-container-title-input"></input>
+                    </div>
+                    <button class="bookmark-info-container-apply">Apply</button>
+                </div>
             </div>
         </dialog>
 
