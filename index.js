@@ -149,7 +149,7 @@ function editBookmark(index) {
 
     applyBtn.addEventListener("click", () => {
         bookmarksArray[index].title = bookmarkTitleInput.value;
-        bookmarksArray[index].url = bookmarkUrlInput.value;
+        bookmarksArray[index].url = bookmarkUrlInput.value.split("https://").pop();
         bookmarkTitleInput.value = "";
         bookmarkUrlInput.value = "";
         renderBookmarks(bookmarksContainer, bookmarksList);
