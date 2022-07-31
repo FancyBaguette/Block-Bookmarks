@@ -10,7 +10,7 @@ Simple tool for easier site navigation in the steam overlay web browser. I creat
 **❗ If you're in-game this requires restarting the game to see the change ❗**
 
 ## 📖 Usage
-Once you've set it up it doesn't really need explanation on how to use it
+Once you've set it up it doesn't really need an explanation on how to use it. Here's a quick rundown:
 ### - Use the "Add a new bookmark" menu to add a new bookmark
 Entering the bookmark's URL is required. You're also given the option to enter the bookmark's title although it's optional. If you don't provide the title, the previously entered URL becomes the title.
 ### - Use the "Manage bookmarks" menu to edit and remove bookmarks
