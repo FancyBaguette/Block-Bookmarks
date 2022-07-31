@@ -46,11 +46,6 @@ closeNewBookmarkModalBtn.addEventListener("click", () => {
 })
 
 manageBookmarksModalBtn.addEventListener("click", () => {
-    // if (bookmarksArray.length > 0) {
-    //     openModal(manageBookmarksModal);
-    // } else {
-    //     alert("Add some bookmarks first!");
-    // }
     openModal(manageBookmarksModal);
 })
 closeManageBookmarksBtn.addEventListener("click", () => {
@@ -148,13 +143,23 @@ function editBookmark(index) {
     bookmarkUrlInput.value = bookmarksArray[index].url;
 
     applyBtn.addEventListener("click", () => {
-        bookmarksArray[index].title = bookmarkTitleInput.value;
-        bookmarksArray[index].url = bookmarkUrlInput.value.split("https://").pop();
-        bookmarkTitleInput.value = "";
-        bookmarkUrlInput.value = "";
-        renderBookmarks(bookmarksContainer, bookmarksList);
-        closeModal(editBookmarkModal);
-        openModal(manageBookmarksModal);
+        if (bookmarkTitleInput.value === "" || undefined) {
+            bookmarksArray[index].title = bookmarkUrlInput.value;
+            bookmarksArray[index].url = bookmarkUrlInput.value.split("https://").pop();
+            bookmarkTitleInput.value = "";
+            bookmarkUrlInput.value = "";
+            renderBookmarks(bookmarksContainer, bookmarksList);
+            closeModal(editBookmarkModal);
+            openModal(manageBookmarksModal);
+        } else {
+            bookmarksArray[index].title = bookmarkTitleInput.value;
+            bookmarksArray[index].url = bookmarkUrlInput.value.split("https://").pop();
+            bookmarkTitleInput.value = "";
+            bookmarkUrlInput.value = "";
+            renderBookmarks(bookmarksContainer, bookmarksList);
+            closeModal(editBookmarkModal);
+            openModal(manageBookmarksModal);
+        }
     })
 }
 
@@ -171,7 +176,10 @@ function wipeAllBookmarks(confirmationInput) {
         renderBookmarks(bookmarksContainer, bookmarksList);
         location.reload();
     } else {
-        alert("Please make sure you typed in the confirmation text properly");
+        wipeAllBookmarksBtn.classList.add('animate__animated', 'animate__shakeX');
+        wipeAllBookmarksBtn.addEventListener("animationend", () => {
+            wipeAllBookmarksBtn.classList.remove('animate__animated', 'animate__shakeX');
+        })
     }
 }
 

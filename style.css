@@ -90,6 +90,14 @@ button {
     text-decoration: none;
 }
 
+button:focus {
+    outline: 1px solid hsla(0, 0%, 20%, 0.8);
+}
+
+.header button:focus {
+    outline: 1px solid black;
+}
+
 input {
     border: 1px solid hsla(0, 0%, 50%, 0.3);
     padding: .2em .4em;
@@ -129,6 +137,16 @@ h3 {
     margin: .5rem 0;
     color: red;
     font-weight: 700;
+}
+
+/* Text ends with three dots upon reaching certain point (236px of width) */
+.bookmark-block h2,
+.list-item h3 {
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	width: 236px;
 }
 
 .accent-text,
@@ -179,23 +197,15 @@ a {
     gap: 1rem;
     text-align: center;
     color: #f5f5f5;
-    background-color: hsla(0, 0%, 20%, 0.8);
+    background-color: #2d2d2d;
     text-decoration: none;
     padding: 1em 2em;
     border-radius: 10px;
 }
 
-.bookmark-block h2 {
-    overflow: hidden;
-    display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  	width: 236px;
-}
-
 .bookmark-block:hover,
 .bookmark-block:focus {
-    background-color: hsla(0, 0%, 30%, 0.8);
+    background-color: #424242;
 }
 
 .bookmark-block:focus {
@@ -328,6 +338,16 @@ dialog::backdrop {
     margin-right: .5rem;
 }
 
+.edit-bookmark-btn:hover,
+.edit-bookmark-btn:focus {
+    color: #0066FF;
+}
+
+.remove-bookmark-btn:hover,
+.remove-bookmark-btn:focus {
+    color: red;
+}
+
 .edit-bookmark-btn::before,
 .remove-bookmark-btn::before {
     content: '';
@@ -348,6 +368,14 @@ dialog::backdrop {
 
 .remove-bookmark-btn::before {
     background-image: url(./svg/trash-icon-black.svg);
+}
+
+.edit-bookmark-btn:hover::before {
+    background-image: url(./svg/edit-icon-blue.svg);
+}
+
+.remove-bookmark-btn:hover::before {
+    background-image: url(./svg/trash-icon-red.svg);
 }
 
 /* ============= */
