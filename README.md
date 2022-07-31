@@ -1,5 +1,5 @@
 # 🧱📚 Block Bookmarks
-Simple tool for easier site navigation in the steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay.
+Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too.
 
 ## 🛠 Setup
 1. Open up Steam settings
@@ -10,7 +10,7 @@ Simple tool for easier site navigation in the steam overlay web browser. I creat
 **❗ If you're in-game this requires restarting the game to see the change ❗**
 
 ## 📖 Usage
-Once you've set it up it doesn't really need explanation on how to use it
+Once you've set it up it doesn't really need an explanation on how to use it. Every time you'll click "WEB BROWSER" in the Steam overlay or open a new tab in a already open overlay web browser the app will show up. Here's a quick rundown on the features:
 ### - Use the "Add a new bookmark" menu to add a new bookmark
 Entering the bookmark's URL is required. You're also given the option to enter the bookmark's title although it's optional. If you don't provide the title, the previously entered URL becomes the title.
 ### - Use the "Manage bookmarks" menu to edit and remove bookmarks
