@@ -1,5 +1,5 @@
 # 🧱📚 Block Bookmarks
-Simple tool for easier site navigation in the steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay.
+Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too.
 
 ## 🛠 Setup
 1. Open up Steam settings
