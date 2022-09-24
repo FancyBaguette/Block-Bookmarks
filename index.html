@@ -17,9 +17,13 @@
         <header class="header">
             <h1><span class="accent-text">Block</span> Bookmarks</h1>
             <div class="actions-container">
-                <button class="new-bookmark-btn">Add a new bookmark</button>
-                <button class="manage-bookmarks-btn">Manage bookmarks</button>
-                <button class="wipe-bookmarks-btn">Wipe all bookmarks</button>
+                <button class="new-bookmark-btn" title="Add a new bookmark"></button>
+                <button class="manage-bookmarks-btn" title="Manage your bookmarks"></button>
+                <button class="settings-btn" title="App settings"></button>
+                <button class="wipe-bookmarks-btn" title="Wipe all bookmarks"></button>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search in Google (press Enter)" class="search">
             </div>
         </header>
 
@@ -49,6 +53,7 @@
             </div>
         </dialog>
 
+
         <dialog class="manage-bookmarks-modal">
             <header class="modal-header">
                 <h1>Manage your bookmarks</h1>
@@ -61,6 +66,7 @@
                 <button class="modal-btn">Add a new one</button>
             </div>
         </dialog>
+
 
         <dialog class="edit-bookmark-modal">
             <header class="modal-header">
@@ -83,6 +89,46 @@
                 <button class="modal-btn bookmark-info-container-apply">Apply</button>
             </div>
         </dialog>
+
+
+        <dialog class="settings-modal">
+            <header class="modal-header">
+                <h1>Settings</h1>
+                <button class="modal-close-btn settings-modal-close">X</button>
+            </header>
+            <div class="modal-body">
+                <div class="modal-inputs">
+                    <div>
+                        <h2>Search engine</h2>
+                        Choose the search engine used in the search bar. Google is chosen by default.
+                    </div>
+
+                    <div class="engine-list">
+                        <label for="Google">Google</label>
+                        <input type="radio" name="search-engine" id="Google" value="https://google.com/search?q="><br>
+
+                        <label for="DuckDuckGo">DuckDuckGo</label>
+                        <input type="radio" name="search-engine" id="DuckDuckGo" value="https://duckduckgo.com/?q="><br>
+
+                        <label for="Bing">Bing</label>
+                        <input type="radio" name="search-engine" id="Bing" value="https://bing.com/search?q="><br><br>
+                    </div>
+
+                    <div>
+                        <h2>Bookmark list style</h2>
+                        <label for="style-default">Default - big boxes</label>
+                        <input type="radio" name="bookmark-list-style" id="style-default"><br>
+
+                        <label for="style-compact">Compact - small boxes with icons only</label>
+                        <input type="radio" name="bookmark-list-style" id="style-compact">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn apply-settings-btn">Apply settings</button>
+            </div>
+        </dialog>
+
 
         <dialog class="wipe-bookmarks-modal">
             <header class="modal-header">

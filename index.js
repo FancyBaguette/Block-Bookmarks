@@ -9,20 +9,24 @@ if (localStorageBookmarks) {
     renderBookmarks(bookmarksArray, bookmarksList);
 }
 
+
 // Modals
 
 const addNewBookmarkModal = document.querySelector(".new-bookmark-modal");
 const manageBookmarksModal = document.querySelector(".manage-bookmarks-modal");
+const settingsModal = document.querySelector(".settings-modal");
 const editBookmarkModal = document.querySelector(".edit-bookmark-modal");
 const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 const addNewBookmarkModalBtn = document.querySelector(".new-bookmark-btn");
 const manageBookmarksModalBtn = document.querySelector(".manage-bookmarks-btn");
+const settingsModalBtn = document.querySelector(".settings-btn");
 const addNewBookmarkModalLinkBtn = document.querySelector(".manage-bookmarks-modal .modal-footer .modal-btn");
 const wipeAllBookmarksModalBtn = document.querySelector(".wipe-bookmarks-btn");
 
 const closeNewBookmarkModalBtn = document.querySelector(".new-bookmark-modal-close");
 const closeManageBookmarksBtn = document.querySelector(".manage-bookmarks-modal-close");
+const closeSettingsModalBtn = document.querySelector(".settings-modal-close");
 const closeEditBookmarkModalBtn = document.querySelector(".edit-bookmark-modal-close");
 const closeWipeAllBookmarksModalBtn = document.querySelector('.wipe-bookmarks-modal-close');
 
@@ -50,6 +54,13 @@ manageBookmarksModalBtn.addEventListener("click", () => {
 })
 closeManageBookmarksBtn.addEventListener("click", () => {
     closeModal(manageBookmarksModal);
+})
+
+settingsModalBtn.addEventListener("click", () => {
+    openModal(settingsModal);
+})
+closeSettingsModalBtn.addEventListener("click", () => {
+    closeModal(settingsModal);
 })
 
 closeEditBookmarkModalBtn.addEventListener("click", () => {
@@ -163,6 +174,60 @@ function editBookmark(index) {
     })
 }
 
+// App settings & search bar
+
+const searchBar = document.querySelector(".search");
+const engineRadio = document.querySelectorAll("[name=search-engine]");
+const styleRadio = document.querySelectorAll("[name=bookmark-list-style");
+let searchPrefix = "";
+
+function applySettings() {
+    engineRadio.forEach(radio => {
+        if (radio.checked) {
+            searchPrefix = radio.value;
+            searchBar.placeholder = `Search in ${radio.id} (press Enter)`;
+            localStorage.setItem("selectedEngine", radio.value)
+        }
+    });
+
+    const bookmarkBlocksTitles = document.querySelectorAll(".bookmark-block:not(#placeholder-bookmark) h2");
+
+    styleRadio.forEach(radio => {
+        if (radio.checked) {
+            if (radio.id === "style-default") {
+                bookmarksContainer.style.gridTemplateColumns = "repeat(3, 300px)"
+                bookmarkBlocksTitles.forEach(title => {
+                    title.style.display = "block";
+                });
+            } else if (radio.id === "style-compact") {
+                bookmarksContainer.style.gridTemplateColumns = "repeat(3, 158px)"
+                bookmarkBlocksTitles.forEach(title => {
+                    title.style.display = "none";
+                });
+            }
+        }
+    })
+    closeModal(settingsModal)
+}
+
+searchBar.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        searchQuery();
+    }
+})
+
+function searchQuery()  {
+    let query = searchBar.value;
+    query = query.replace(" ", "+");
+    searchBar.value = "";
+    window.location.replace(`${searchPrefix}${query}`);
+}
+
+const applySettingsBtn = document.querySelector(".apply-settings-btn");
+applySettingsBtn.addEventListener("click", () => {
+    applySettings();
+})
+
 // Removing all bookmarks
 
 const wipeAllBookmarksBtn = document.querySelector(".wipe-all-bookmarks-btn");
@@ -241,10 +306,11 @@ function renderBookmarks(container, list) {
                 editBookmark(i);
             })
         }
+
     } else {
         container.innerHTML +=
         `
-            <a href="#" class="bookmark-block">
+            <a href="#" class="bookmark-block" id="placeholder-bookmark">
                 <h2>No bookmarks yet!</h2>
                 Add a new one!
         `;
@@ -253,10 +319,20 @@ function renderBookmarks(container, list) {
         `
             <p>You currently have no bookmarks. Click the button below to add a new one.</p>
         `
+
+        document.querySelector("#placeholder-bookmark").addEventListener("click", () => {
+            openModal(addNewBookmarkModal);
+        })
     }
+
+    // This is such a fucking stupid bruteforce
+    setTimeout(() => {
+        applySettings();
+    },.01)
 }
 
 renderBookmarks(bookmarksContainer, bookmarksList);
+applySettings();
 
 // Getting the icon for bookmark blocks
 

@@ -1,4 +1,6 @@
-/* General styles & HTML tags */
+/* ===============
+GENERAL
+================== */
 
 body {
     background-color: hsla(0, 0%, 0%, 0.9);
@@ -14,6 +16,7 @@ button {
     border: 0;
     background-color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 button:focus {
@@ -37,7 +40,10 @@ input {
     justify-content: center;
 }
 
-/* Utility */
+
+/* ===============
+UTILITY
+================== */
 
 .flex-center-all {
     display: flex;
@@ -45,7 +51,10 @@ input {
     align-items: center;
 }
 
-/* Typography */
+
+/* ===============
+TYPOGRAPHY
+================== */
 
 h1 {
     font-weight: 700;
@@ -80,6 +89,10 @@ a {
     color: #0066FF
 }
 
+/* ===============
+LAYOUT
+================== */
+
 /* Header */
 
 .header {
@@ -94,13 +107,95 @@ a {
 
 .actions-container {
     margin-top: .5rem;
+    font-size: .95rem;
     display: flex;
     justify-content: space-between;
-    width: 35%;
+    width: 25%;
 }
 
-.actions-container button {
-    border-radius: 10px;
+/* Header buttons & search bar */
+
+.header button {
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .5em .5em;
+    background-color: #0066FF;
+    border: 5px solid #0066FF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search-container {
+    width: 35%;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.search {
+    display: block;
+    width: 100%;
+    font-style: italic;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.search-container::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-image: url(/svg/search.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 0;
+    top: 1ch;
+    margin-left: .5rem;
+}
+
+/* Specific buttons - icons & hover states */
+
+.new-bookmark-btn {
+    background-image: url(/svg/header-buttons/add-default.svg);
+}
+
+.manage-bookmarks-btn {
+    background-image: url(/svg/header-buttons/manage-default.svg);
+}
+
+.settings-btn {
+    background-image: url(/svg/header-buttons/settings-default.svg);
+}
+
+.wipe-bookmarks-btn {
+    background-image: url(/svg/header-buttons/trash-default.svg);
+}
+
+.new-bookmark-btn:hover,
+.manage-bookmarks-btn:hover,
+.settings-btn:hover,
+.wipe-bookmarks-btn:hover {
+    background-color: white;
+    border: 5px solid white;
+}
+
+.new-bookmark-btn:hover {
+    background-image: url(/svg/header-buttons/add-hover.svg);
+}
+
+.manage-bookmarks-btn:hover {
+    background-image: url(/svg/header-buttons/manage-hover.svg);
+}
+
+.settings-btn:hover {
+    background-image: url(/svg/header-buttons/settings-hover.svg);
+}
+
+.wipe-bookmarks-btn:hover {
+    background-image: url(/svg/header-buttons/trash-hover.svg);
 }
 
 /* Bookmark blocks */
@@ -141,6 +236,10 @@ a {
 .bookmark-block-icon {
     width: 40px;
     height: 40px;
+}
+
+#placeholder-bookmark {
+    width: 300px;
 }
 
 /* Modals */
@@ -302,6 +401,13 @@ dialog::backdrop {
 
 .remove-bookmark-btn:hover::before {
     background-image: url(./svg/trash-icon-red.svg);
+}
+
+/* Settings modal */
+
+#custom-search-engine {
+    width: 100%;
+    max-width: 383px;
 }
 
 /* ============= */
