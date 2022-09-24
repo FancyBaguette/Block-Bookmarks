@@ -310,7 +310,7 @@ function renderBookmarks(container, list) {
     } else {
         container.innerHTML +=
         `
-            <a href="#" class="bookmark-block" id="placeholder-bookmark">
+            <a href="#" class="bookmark-block" id="placeholder-bookmark" onclick="openModal(addNewBookmarkModal)">
                 <h2>No bookmarks yet!</h2>
                 Add a new one!
         `;
@@ -319,10 +319,6 @@ function renderBookmarks(container, list) {
         `
             <p>You currently have no bookmarks. Click the button below to add a new one.</p>
         `
-
-        document.querySelector("#placeholder-bookmark").addEventListener("click", () => {
-            openModal(addNewBookmarkModal);
-        })
     }
 
     // This is such a fucking stupid bruteforce
