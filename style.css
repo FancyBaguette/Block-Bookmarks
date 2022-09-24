@@ -159,19 +159,19 @@ LAYOUT
 /* Specific buttons - icons & hover states */
 
 .new-bookmark-btn {
-    background-image: url(/svg/header-buttons/add-default.svg);
+    background-image: url(./svg/header-buttons/add-default.svg);
 }
 
 .manage-bookmarks-btn {
-    background-image: url(/svg/header-buttons/manage-default.svg);
+    background-image: url(./svg/header-buttons/manage-default.svg);
 }
 
 .settings-btn {
-    background-image: url(/svg/header-buttons/settings-default.svg);
+    background-image: url(./svg/header-buttons/settings-default.svg);
 }
 
 .wipe-bookmarks-btn {
-    background-image: url(/svg/header-buttons/trash-default.svg);
+    background-image: url(./svg/header-buttons/trash-default.svg);
 }
 
 .new-bookmark-btn:hover,
@@ -183,19 +183,19 @@ LAYOUT
 }
 
 .new-bookmark-btn:hover {
-    background-image: url(/svg/header-buttons/add-hover.svg);
+    background-image: url(./svg/header-buttons/add-hover.svg);
 }
 
 .manage-bookmarks-btn:hover {
-    background-image: url(/svg/header-buttons/manage-hover.svg);
+    background-image: url(./svg/header-buttons/manage-hover.svg);
 }
 
 .settings-btn:hover {
-    background-image: url(/svg/header-buttons/settings-hover.svg);
+    background-image: url(./svg/header-buttons/settings-hover.svg);
 }
 
 .wipe-bookmarks-btn:hover {
-    background-image: url(/svg/header-buttons/trash-hover.svg);
+    background-image: url(./svg/header-buttons/trash-hover.svg);
 }
 
 /* Bookmark blocks */
