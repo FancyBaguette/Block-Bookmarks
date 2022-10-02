@@ -24,6 +24,8 @@ A **Bookmark block** consists of the Bookmark's title and the bookmarked website
 
 ## 🐞 Known bugs
 - The search bar doesn't work in the Overlay browser.
+
+## 🖼 Screenshots
   
 ![Screenshot of the app with the 'Default' bookmark list style](https://media.discordapp.net/attachments/972799878956716122/1023285072926875718/default-style.png?width=960&height=540)
 ![Screenshot of the app with the 'Compact' bookmark list style](https://media.discordapp.net/attachments/972799878956716122/1023285072520024214/compact-style.png?width=960&height=540)
