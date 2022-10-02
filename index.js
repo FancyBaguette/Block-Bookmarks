@@ -321,7 +321,7 @@ function renderBookmarks(container, list) {
         `
     }
 
-    // This is such a fucking stupid bruteforce
+    // This is such a silly workaround
     setTimeout(() => {
         applySettings();
     },.01)
