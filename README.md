@@ -1,4 +1,6 @@
-# 🧱📚 Block Bookmarks
+# 
+
+<!-- # 🧱📚 Block Bookmarks
 Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too.
 
 ## 🛠 Setup
@@ -28,4 +30,4 @@ A **Bookmark block** consists of the Bookmark's title and the bookmarked website
 ## 🖼 Screenshots
   
 ![Screenshot of the app with the 'Default' bookmark list style](https://media.discordapp.net/attachments/972799878956716122/1023285072926875718/default-style.png?width=960&height=540)
-![Screenshot of the app with the 'Compact' bookmark list style](https://media.discordapp.net/attachments/972799878956716122/1023285072520024214/compact-style.png?width=960&height=540)
+![Screenshot of the app with the 'Compact' bookmark list style](https://media.discordapp.net/attachments/972799878956716122/1023285072520024214/compact-style.png?width=960&height=540) -->
