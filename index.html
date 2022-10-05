@@ -17,16 +17,66 @@
 
         <header class="site-header">
             <div class="site-header-buttons-container">
-                <button class="header-btn">Add</button>
-                <button class="header-btn">Manage</button>
-                <button class="header-btn">Settings</button>
+                <button class="header-btn new-bookmark-modal-btn">Add</button>
+                <button class="header-btn manage-bookmarks-modal-btn">Manage</button>
+                <button class="header-btn settings-modal-btn">Settings</button>
             </div>
         </header>
 
     </div>
 
     <!-- MODALS SECTION -->
+
+    <!-- New bookmark modal -->
+    <dialog class="app-modal new-bookmark-modal">
+        <div class="modal-body">
+
+            <div class="modal-header">
+                <h1>Add a new bookmark</h1>
+                <button class="modal-close-btn new-bookmark-modal-close">X</button>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-section modal-section-single">
+                    <form action="#" class="modal-form new-bookmark-form">
+                        <label for="bookmark-url">Enter the bookmark's URL</label>
+                        <input type="text" class="new-bookmark-url-input" name="bookmark-url">
+
+                        <label for="bookmark-title">Enter the bookmark's title (optional)</label>
+                        <input type="text" class="new-bookmark-title-input" name="bookmark-title">
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn">Cancel</button>
+                <button class="modal-footer-btn" type="submit" form="new-bookmark-form">Add</button>
+            </div>
+
+        </div>
+    </dialog>
+
+    <!-- Manage bookmarks modal -->
+    <dialog class="app-modal manage-bookmarks-modal">
+        <div class="modal-body">
+
+            <div class="modal-header">
+                <h1>Manage your bookmarks</h1>
+                <button class="modal-close-btn manage-bookmarks-modal-close">X</button>
+            </div>
+
+            <div class="modal-content">
+                Lorem ipsum dolor sit amet.
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-footer-btn" type="submit" form="new-bookmark-form">Add a new one</button>
+            </div>
+
+        </div>
+    </dialog>
     
     <script src="./assets/js/index.js"></script>
+    <!-- <script src="./assets/js/modals.js"></script> -->
 </body>
 </html>

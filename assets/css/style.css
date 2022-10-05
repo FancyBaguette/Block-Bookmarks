@@ -3,7 +3,7 @@ VARIABLES
 ================== */
 
 :root {
-    --clr-accent: hsl(205, 96%, 55%);
+    --clr-accent: hsl(205, 67%, 48%);
     --clr-bg: hsl(210, 11%, 11%);
     --clr-fg: hsl(0, 0%, 96%);
 }
@@ -31,6 +31,10 @@ button:hover {
 TYPOGRAPHY
 ================== */
 
+body {
+    font-family: 'Source Sans Pro', Tahoma, sans-serif;
+}
+
 /* ===============
 LAYOUT
 ================== */
@@ -44,8 +48,8 @@ LAYOUT
     background-color: var(--clr-accent);
     width: 100%;
     min-height: 5rem;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 100vmax;
+    border-bottom-right-radius: 100vmax;
     padding-inline: 2rem;
 }
 
@@ -62,6 +66,90 @@ LAYOUT
     border: 0;
     padding: 0;
     background-color: white;
+}
+
+/* -- Bookmark blocks */
+
+
+/* -- Modals --  */
+
+dialog {
+    padding: 0;
+    border: 0;
+    min-width: 50%;
+    border-radius: 15px;
+}
+
+dialog::backdrop {
+    background-color: hsla(210, 100%, 0%, 0.5);
+}
+
+.modal-header,
+.modal-content {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.modal-header .modal-close-btn {
+    background-color: hsl(260, 16%, 96%);
+    border: 0;
+    border-radius: 10px;
+    min-width: 40px;
+    min-height: 40px;
+    font-weight: 900;
+}
+
+.modal-content {
+    padding-bottom: 2rem;
+}
+
+.modal-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
+}
+
+.modal-form input {
+    border: 1px solid hsl(0, 0%, 86%);
+    border-radius: 15px;
+    padding: .2em .3em;
+}
+
+.modal-form input:focus {
+    outline: 0;
+    box-shadow: 0px 0px 5px 2px var(--clr-accent);
+}
+
+.modal-form label {
+    padding: .5em 0;
+}
+
+.modal-footer {
+    background-color: hsl(260, 16%, 96%);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-footer button {
+    border-radius: 10px;
+    padding: .3em 1em;
+    border: 0;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.modal-footer-btn {
+    background-color: var(--clr-accent);
+    color: white;
 }
 
 /* ===============
