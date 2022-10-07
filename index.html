@@ -23,6 +23,12 @@
             </div>
         </header>
 
+        <main class="bookmarks-container"></main>
+
+        <footer class="site-footer">
+            <!-- github logo link here -->
+        </footer>
+
     </div>
 
     <!-- MODALS SECTION -->
@@ -38,9 +44,9 @@
 
             <div class="modal-content">
                 <div class="modal-section modal-section-single">
-                    <form action="#" class="modal-form new-bookmark-form">
+                    <form action="#" class="modal-form new-bookmark-form" id="new-bookmark-form">
                         <label for="bookmark-url">Enter the bookmark's URL</label>
-                        <input type="text" class="new-bookmark-url-input" name="bookmark-url">
+                        <input type="text" class="new-bookmark-url-input" name="bookmark-url" required>
 
                         <label for="bookmark-title">Enter the bookmark's title (optional)</label>
                         <input type="text" class="new-bookmark-title-input" name="bookmark-title">
@@ -49,7 +55,6 @@
             </div>
 
             <div class="modal-footer">
-                <button class="modal-close-btn">Cancel</button>
                 <button class="modal-footer-btn" type="submit" form="new-bookmark-form">Add</button>
             </div>
 
@@ -77,6 +82,5 @@
     </dialog>
     
     <script src="./assets/js/index.js"></script>
-    <!-- <script src="./assets/js/modals.js"></script> -->
 </body>
 </html>

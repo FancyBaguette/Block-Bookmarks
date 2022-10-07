@@ -25,6 +25,9 @@ button:hover {
     min-height: 100vh;
     width: 70%;
     margin: 0 auto;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
 }
 
 /* ===============
@@ -68,8 +71,31 @@ LAYOUT
     background-color: white;
 }
 
-/* -- Bookmark blocks */
+/* -- Bookmark blocks -- */
 
+.bookmarks-container {
+    padding-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.bookmark-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 1rem;
+    background-color: rgb(33, 32, 36);
+    color: var(--clr-fg);
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.bookmark-block-icon {
+    min-height: 64px;
+}
 
 /* -- Modals --  */
 
