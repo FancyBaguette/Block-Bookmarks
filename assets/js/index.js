@@ -7,7 +7,7 @@
 
 
 // - Dialog elements
-const newBookmarkModal = document.querySelector(".new-bookmark-modal");
+const newBookmarkModal = document.getElementById('new-bookmark-modal');
 // const manageBookmarksModal = document.querySelector(".manage-bookmarks-modal");
 // const settingsModal = document.querySelector(".settings-modal");
 // const editBookmarkModal = document.querySelector(".edit-bookmark-modal");
@@ -22,13 +22,12 @@ const newBookmarkModalBtn = document.querySelector(".new-bookmark-modal-btn");
 // const wipeAllBookmarksModalBtn = document.querySelector(".wipe-bookmarks-btn");
 
 // - Closing buttons
-const closeNewBookmarkModalBtn = document.querySelector(".new-bookmark-modal-close");
 // const closeManageBookmarksBtn = document.querySelector(".manage-bookmarks-modal-close");
 // const closeSettingsModalBtn = document.querySelector(".settings-modal-close");
 // const closeEditBookmarkModalBtn = document.querySelector(".edit-bookmark-modal-close");
 // const closeWipeAllBookmarksModalBtn = document.querySelector('.wipe-bookmarks-modal-close');
 
-// === Open/close modal functions ===
+// Open/close modal functions
 
 function openModal(modal) {
     modal.showModal();
@@ -38,16 +37,16 @@ function closeModal(modal) {
     modal.close();
 }
 
-// === Event listeners ===
+// Event listeners
 
-newBookmarkModalBtn.addEventListener("click", () => {
+document.getElementById('new-bookmark-modal-btn').addEventListener('click', () => {
     openModal(newBookmarkModal);
 })
 // addNewBookmarkModalLinkBtn.addEventListener("click", () => {
 //     closeModal(manageBookmarksModal);
 //     openModal(newBookmarkModal);
 // })
-closeNewBookmarkModalBtn.addEventListener("click", () => {
+document.getElementById('new-bookmark-modal-close-btn').addEventListener('click', () => {
     closeModal(newBookmarkModal);
 })
 

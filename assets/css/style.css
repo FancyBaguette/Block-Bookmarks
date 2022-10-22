@@ -63,8 +63,10 @@ LAYOUT
 }
 
 .header-btn {
-    width: 4rem;
-    height: 4rem;
+    --header-btn-size: 4rem;
+    width: var(--header-btn-size);
+    height: var(--header-btn-size);
+    font-size: calc(var(--header-btn-size) - 2.5rem);
     border-radius: 100%;
     border: 0;
     padding: 0;
@@ -127,8 +129,8 @@ dialog::backdrop {
     background-color: hsl(260, 16%, 96%);
     border: 0;
     border-radius: 10px;
-    min-width: 40px;
     min-height: 40px;
+    aspect-ratio: 1;
     font-weight: 900;
 }
 
@@ -138,7 +140,7 @@ dialog::backdrop {
 
 .modal-form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     row-gap: 1rem;
 }
 
