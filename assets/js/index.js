@@ -102,8 +102,18 @@ let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
 
 // Getting bookmarks from local storage
 if (localStorageBookmarks) {
-    bookmarksArray = localStorageBookmarks;
-    // renderBookmarks(bookmarksArray, bookmarksList);
+    const processedLocalStorageBookmarks = [];
+    /* 
+    URL objects do not save to localStorage as objects but rather as strings with the url addresses only
+    Therefore, in the 'forEach' loop every string from the localStorage gets turned into an object that is
+    then pushed to the 'processedLocalStorageBookmarks' array. At the end, 'bookmarksArray' value is
+    assigned to 'processedLocalStorageBookmarks'.
+    */
+    localStorageBookmarks.forEach((e) => {
+        processedLocalStorageBookmarks.push(new URL(e))
+    })
+    bookmarksArray = processedLocalStorageBookmarks;
+    // renderBookmarks(bookmarksArray, bookmarksList); -- commented out until implementation of bookmarksList
 }
 
 // === Adding a new bookmark === 
