@@ -18,17 +18,15 @@
 
         <header class="site-header">
             <div class="site-header-buttons-container">
-                <button class="header-btn" id="new-bookmark-modal-btn"><i class="fa-solid fa-plus"></i></button>
-                <button class="header-btn" id="manage-bookmarks-modal-btn"><i class="fa-solid fa-bars"></i></button>
-                <button class="header-btn" id="settings-modal-btn"><i class="fa-solid fa-gear"></i></button>
+                <button class="header-btn" data-modal="new-bookmark-modal"><i class="fa-solid fa-plus"></i></button>
+                <button class="header-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-bars"></i></button>
+                <button class="header-btn" data-modal="settings-modal-btn"><i class="fa-solid fa-gear"></i></button>
             </div>
         </header>
 
         <main class="bookmarks-container"></main>
 
-        <footer class="site-footer">
-            <!-- github logo link here -->
-        </footer>
+        <a href="https://github.com/FancyBaguette/block-bookmarks" class="github-link"><i class="fa-brands fa-github"></i></a>
 
     </div>
 
@@ -40,7 +38,7 @@
 
             <div class="modal-header">
                 <h1>Add a new bookmark</h1>
-                <button class="modal-close-btn new-bookmark-modal-close">X</button>
+                <button class="modal-close-btn" data-modal="new-bookmark-modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="modal-content">
@@ -63,24 +61,45 @@
     </dialog>
 
     <!-- Manage bookmarks modal -->
-    <dialog class="app-modal manage-bookmarks-modal">
+    <dialog class="app-modal" id="manage-bookmarks-modal">
         <div class="modal-body">
 
             <div class="modal-header">
                 <h1>Manage your bookmarks</h1>
-                <button class="modal-close-btn" id="new-bookmark-modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                <button class="modal-close-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="modal-content">
-                Lorem ipsum dolor sit amet.
+                <ul class="bookmarks-list" id="bookmarks-list"></ul>
             </div>
 
             <div class="modal-footer">
-                <button class="modal-footer-btn" type="submit" form="new-bookmark-form">Add a new one</button>
+                <button class="modal-footer-btn">Add a new one</button>
             </div>
 
         </div>
     </dialog>
+
+    <!-- 
+        <dialog class="app-modal" id="XXX">
+            <div class="modal-body">
+
+                <div class="modal-header">
+                    <h1>Lorem, ipsum dolor.</h1>
+                    <button class="modal-close-btn" data-modal="XXX"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="modal-content">
+                    Lorem ipsum dolor sit amet.
+                </div>
+
+                <div class="modal-footer">
+                    <button class="modal-footer-btn">Lorem</button>
+                </div>
+
+            </div>
+        </dialog> 
+    -->
     
     <script src="./assets/js/index.js"></script>
 </body>
