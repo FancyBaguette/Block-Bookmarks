@@ -1,4 +1,3 @@
-// !!! DEV BRANCH !!!
 // === DIALOGS ===
 
 // DOM nodes
