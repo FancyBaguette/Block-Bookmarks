@@ -4,7 +4,7 @@
 const newBookmarkModal = document.getElementById('new-bookmark-modal');
 const manageBookmarksModal = document.getElementById('manage-bookmarks-modal');
 // const settingsModal = document.querySelector(".settings-modal");
-// const editBookmarkModal = document.querySelector(".edit-bookmark-modal");
+const editBookmarkModal = document.getElementById('edit-bookmark-modal');
 // const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 function openModal(modal) {
@@ -69,15 +69,26 @@ newBookmarkForm.addEventListener('submit', (e) => {
 
         const newBookmark = new URL(newBookmarkURL);
         newBookmark.title = newBookmarkFormData.get('bookmark-title');
+        // if (newBookmarkFormData.get('bookmark-title') === "" || newBookmarkFormData.get('bookmark-title') === undefined) {
+        //     newBookmark.title = newBookmarkFormData.get('bookmark-url');
+        // } else {
+        //     newBookmark.title = newBookmarkFormData.get('bookmark-title');
+        // }
 
         bookmarksArray.push(newBookmark);
         localStorage.setItem("blockBookmarks", JSON.stringify(bookmarksArray));
-        renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray)
+        renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
 
         closeModal(newBookmarkModal);
     } else {
         const newBookmark = new URL(newBookmarkFormData.get('bookmark-url'));
         newBookmark.title = newBookmarkFormData.get('bookmark-title');
+
+        // if (newBookmarkFormData.get('bookmark-title') === "" || newBookmarkFormData.get('bookmark-title') === undefined) {
+        //     newBookmark.title = newBookmarkFormData.get('bookmark-url');
+        // } else {
+        //     newBookmark.title = newBookmarkFormData.get('bookmark-title');
+        // }
 
         bookmarksArray.push(newBookmark);
         localStorage.setItem("blockBookmarks", JSON.stringify(bookmarksArray));
@@ -92,6 +103,50 @@ newBookmarkForm.addEventListener('submit', (e) => {
 function removeBookmark(index) {
     bookmarksArray.splice(index, 1);
     renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+}
+
+// Editing a bookmark
+
+function editBookmark(index) {
+    closeModal(manageBookmarksModal);
+    openModal(editBookmarkModal);
+
+    document.getElementById('edit-bookmark-modal-bookmark-id').textContent = `Editing bookmark #${index+1}`
+
+    const editBookmarkForm = document.getElementById('edit-bookmark-form');
+
+    document.getElementById('edit-bookmark-form-url-input').value = bookmarksArray[index].href;
+    const editBookmarkTitleInput = document.getElementById('edit-bookmark-form-title-input');
+
+    if (bookmarksArray[index].title === undefined) {
+        editBookmarkTitleInput.value = bookmarksArray[index].href;
+    }
+
+    editBookmarkForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const editBookmarkFormData = new FormData(editBookmarkForm);
+
+        console.log(editBookmarkFormData.get('bookmark-url'))
+
+        if (!editBookmarkFormData.get('bookmark-url').includes('https://')) {
+            console.log('foo')
+            const bookmarkTitle = 'https://' + editBookmarkFormData.get('bookmark-url');
+            bookmarksArray[index].href = bookmarkTitle;
+            bookmarksArray[index].title = editBookmarkFormData.get('bookmark-title');
+        } else {
+            bookmarksArray[index].href = editBookmarkFormData.get('bookmark-url');
+            bookmarksArray[index].title = editBookmarkFormData.get('bookmark-title');
+        }
+
+
+    localStorage.setItem("blockBookmarks", JSON.stringify(bookmarksArray));
+        renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+        closeModal(editBookmarkModal);
+        openModal(manageBookmarksModal);
+    })
+
+    
 }
 
 // Rendering the bookmarks
