@@ -18,9 +18,9 @@
 
         <header class="site-header">
             <div class="site-header-buttons-container">
-                <button class="header-btn" data-modal="new-bookmark-modal"><i class="fa-solid fa-plus"></i></button>
-                <button class="header-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-bars"></i></button>
-                <button class="header-btn" data-modal="settings-modal-btn"><i class="fa-solid fa-gear"></i></button>
+                <button class="header-btn modal-open-btn" data-modal="new-bookmark-modal"><i class="fa-solid fa-plus"></i></button>
+                <button class="header-btn modal-open-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-bars"></i></button>
+                <button class="header-btn modal-open-btn" data-modal="settings-modal"><i class="fa-solid fa-gear"></i></button>
             </div>
         </header>
 
@@ -42,7 +42,7 @@
             </div>
 
             <div class="modal-content">
-                <div class="modal-section modal-section-single">
+                <div class="modal-section">
                     <form action="#" class="modal-form new-bookmark-form" id="new-bookmark-form">
                         <label for="bookmark-url">Enter the bookmark's URL</label>
                         <input type="text" class="new-bookmark-url-input" name="bookmark-url" required>
@@ -69,16 +69,66 @@
                 <button class="modal-close-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
-            <div class="modal-content">
-                <ul class="bookmarks-list" id="bookmarks-list"></ul>
+            <div class="modal-section">
+                <div class="modal-content">
+                    <ul class="bookmarks-list" id="bookmarks-list"></ul>
+                </div>
             </div>
 
             <div class="modal-footer">
-                <button class="modal-footer-btn">Add a new one</button>
+                <button class="modal-footer-btn modal-open-btn" data-modal="new-bookmark-modal">Add a new one</button>
             </div>
 
         </div>
     </dialog>
+
+    <!-- Editing a bookmark modal -->
+    <dialog class="app-modal" id="edit-bookmark-modal">
+        <div class="modal-body">
+
+            <div class="modal-header">
+                <h1 id="edit-bookmark-modal-bookmark-id"></h1>
+                <button class="modal-close-btn" data-modal="edit-bookmark-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-section">
+                    <form action="#" class="modal-form" id="edit-bookmark-form">
+                        <label for="bookmark-url">Bookmarks URL</label>
+                        <input type="text" id="edit-bookmark-form-url-input" name="bookmark-url" required>
+
+                        <label for="bookmark-title">Bookmarks title</label>
+                        <input type="text" id="edit-bookmark-form-title-input" name="bookmark-title">
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-footer-btn" type="submit" form="edit-bookmark-form">Apply changes</button>
+            </div>
+
+        </div>
+    </dialog> 
+
+    <!-- Settings modal -->
+    <dialog class="app-modal" id="settings-modal">
+        <div class="modal-body">
+
+            <div class="modal-header">
+                <h1>App settings</h1>
+                <button class="modal-close-btn" data-modal="settings-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, repellat.
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-footer-btn" type="submit" form="settings-form">Apply settings</button>
+            </div>
+
+        </div>
+    </dialog> 
 
     <!-- 
         <dialog class="app-modal" id="XXX">

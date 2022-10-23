@@ -1,10 +1,11 @@
+// !!! DEV BRANCH !!!
 // === DIALOGS ===
 
 // DOM nodes
 const newBookmarkModal = document.getElementById('new-bookmark-modal');
 const manageBookmarksModal = document.getElementById('manage-bookmarks-modal');
-// const settingsModal = document.querySelector(".settings-modal");
-// const editBookmarkModal = document.querySelector(".edit-bookmark-modal");
+const settingsModal = document.getElementById('settings-modal');
+const editBookmarkModal = document.getElementById('edit-bookmark-modal');
 // const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 function openModal(modal) {
@@ -17,13 +18,13 @@ function closeModal(modal) {
 
 // Event listeners
 
-document.querySelectorAll('.site-header .header-btn').forEach(e => {
+document.querySelectorAll('.modal-open-btn').forEach(e => {
     e.addEventListener('click', () => {
         openModal(document.getElementById(e.dataset.modal))
     })
 })
 
-document.querySelectorAll('.modal-header .modal-close-btn').forEach(e => {
+document.querySelectorAll('.modal-close-btn').forEach(e => {
     e.addEventListener('click', () => {
         closeModal(document.getElementById(e.dataset.modal))
     })
@@ -39,18 +40,7 @@ let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
 
 // Getting bookmarks from local storage
 if (localStorageBookmarks) {
-    const processedLocalStorageBookmarks = [];
-    /* 
-    URL objects do not save to localStorage as objects but rather as strings with the url addresses only, due to JSON.stringify
-    Therefore, in the 'forEach' loop every string from the localStorage gets turned into an object that is
-    then pushed to the 'processedLocalStorageBookmarks' array. At the end, 'bookmarksArray' value is
-    assigned to 'processedLocalStorageBookmarks'.
-    */
-    localStorageBookmarks.forEach((e) => {
-        processedLocalStorageBookmarks.push(new URL(e))
-    })
-    bookmarksArray = processedLocalStorageBookmarks;
-    // renderBookmarks(bookmarksArray, bookmarksList); -- commented out until implementation of bookmarksList
+    bookmarksArray = localStorageBookmarks;
 }
 
 // Adding a new bookmark
@@ -62,37 +52,76 @@ newBookmarkForm.addEventListener('submit', (e) => {
 
     const newBookmarkFormData = new FormData(newBookmarkForm);
 
-    if (!newBookmarkFormData.get('bookmark-url').includes('https://')) {
-        // If provided bookmark URL doesn't include the 'https://' prefix, it gets added.
-        let newBookmarkURL = newBookmarkFormData.get('bookmark-url');
-        newBookmarkURL = "https://" + newBookmarkURL;
+    let newBookmark = {};
 
-        const newBookmark = new URL(newBookmarkURL);
-        newBookmark.title = newBookmarkFormData.get('bookmark-title');
+    const bookmarkUrl = newBookmarkFormData.get('bookmark-url');
+    const bookmarkTitle = newBookmarkFormData.get('bookmark-title');
 
-        bookmarksArray.push(newBookmark);
-        localStorage.setItem("blockBookmarks", JSON.stringify(bookmarksArray));
-        renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray)
-
-        closeModal(newBookmarkModal);
+    if (bookmarkTitle === "") {
+        newBookmark.url = bookmarkUrl.split('https://').pop();
+        newBookmark.title = newBookmark.url;
     } else {
-        const newBookmark = new URL(newBookmarkFormData.get('bookmark-url'));
-        newBookmark.title = newBookmarkFormData.get('bookmark-title');
+        newBookmark.url = bookmarkUrl.split('https://').pop();
+        newBookmark.title = bookmarkTitle;
+    }
 
-        bookmarksArray.push(newBookmark);
-        localStorage.setItem("blockBookmarks", JSON.stringify(bookmarksArray));
+    bookmarksArray.push(newBookmark);
+    localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
+    renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+
+    newBookmarkForm.reset();
+    closeModal(newBookmarkModal);
+});
+
+// Editing a bookmark 
+
+function editBookmark(index) {
+    closeModal(manageBookmarksModal);
+    openModal(editBookmarkModal);
+
+    document.getElementById('edit-bookmark-modal-bookmark-id').textContent = `Editing bookmark #${index+1}`
+
+    const editBookmarkForm = document.getElementById('edit-bookmark-form');
+
+    document.getElementById('edit-bookmark-form-url-input').value = bookmarksArray[index].url;
+    document.getElementById('edit-bookmark-form-title-input').value = bookmarksArray[index].title;
+
+    editBookmarkForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const editBookmarkFormData = new FormData(editBookmarkForm);
+
+        const bookmarkUrl = editBookmarkFormData.get('bookmark-url');
+        const bookmarkTitle = editBookmarkFormData.get('bookmark-title');
+
+        if (bookmarkTitle === "") {
+            bookmarksArray[index].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[index].title = bookmarksArray[index].url;
+        } else {
+            bookmarksArray[index].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[index].title = bookmarkTitle;
+        }
+
+        localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
         renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
 
-        closeModal(newBookmarkModal);
-    }
-});
+        editBookmarkForm.reset();
+        closeModal(editBookmarkModal);
+        openModal(manageBookmarksModal);
+
+    })
+
+}
 
 // Removing a bookmark
 
 function removeBookmark(index) {
     bookmarksArray.splice(index, 1);
+    localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
     renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
 }
+
+// App settings
 
 // Rendering the bookmarks
 
@@ -104,41 +133,32 @@ function loadWhiteAltIcon(e) {
     e.src = "./assets/img/desktop-icon-white.svg";
 }
 
+function getFavicon(url) {
+    return 'https://' + url.split("/")[0] + "/favicon.ico";
+}
+
 function renderBookmarks(container, list, array) {
 
     container.innerHTML = '';
     list.innerHTML = '';
 
     if (array.length > 0) {
-        function getBookmarksTitle(bookmarkObject) {
-            if (bookmarkObject.title === "" || bookmarkObject.title === undefined) {
-                return bookmarkObject.hostname;
-            } else {
-                return bookmarkObject.title;
-            }
-        }
-    
-        function getBookmarksFavicon(bookmarkObject) {
-            return bookmarkObject.href + "favicon.ico";
-        }
-    
-    
+
         array.forEach((bookmark, index) => {
-    
-            container.innerHTML += 
+            container.innerHTML +=
             `
-                <a class="bookmark-block" href="${bookmark.href}">
-                    <h1>${getBookmarksTitle(bookmark)}</h1>
-                    <img class="bookmark-block-icon" src="${getBookmarksFavicon(bookmark)}" onerror="loadWhiteAltIcon(this)">
+                <a class="bookmark-block" href="https://${bookmark.url}">
+                    <h1>${bookmark.title}</h1>
+                    <img class="bookmark-block-icon" src="${getFavicon(bookmark.url)}" onerror="loadWhiteAltIcon(this)">
                 </a>
             `;
-    
+
             list.innerHTML +=
             `
                 <li class="bookmarks-list-item">
                     <div class="bookmarks-list-item-meta">
-                        <img class="bookmarks-list-item-icon" src="${getBookmarksFavicon(bookmark)}" onerror="loadBlackAltIcon(this)">
-                        <p class="bookmarks-list-item-title">${getBookmarksTitle(bookmark)}</p>
+                        <img class="bookmarks-list-item-icon" src="${getFavicon(bookmark.url)}" onerror="loadBlackAltIcon(this)">
+                        <p class="bookmarks-list-item-title">${bookmark.title}</p>
                     </div>
                     <div class="bookmarks-list-item-actions">
                         <button class="bookmarks-list-item-remove-btn" onclick="removeBookmark(${index})"><i class="fa-solid fa-trash"></i>Remove</button>
@@ -146,9 +166,16 @@ function renderBookmarks(container, list, array) {
                     </div>
                 </li>
             `
-        });
+        })
     } else {
-        list.innerHTML = `<p>You don't have any bookmarks</p>`
+        container.innerHTML = 
+        `
+            <a class="bookmark-block bookmark-block-placeholder" onclick="openModal(newBookmarkModal)">
+                <h1>You don't have any bookmarks</h1>
+                <p>Click here to add a new one</p>
+            </a>
+        `;
+        list.innerHTML = `<p>You don't have any bookmarks. Add one with the button below.</p>`
     }
 
 }

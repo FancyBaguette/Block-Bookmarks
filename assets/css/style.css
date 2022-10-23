@@ -4,6 +4,7 @@ VARIABLES
 
 :root {
     --clr-accent: hsl(205, 67%, 48%);
+    --clr-warning: hsl(0, 80%, 60%);
     --clr-bg: hsl(210, 11%, 11%);
     --clr-fg: hsl(0, 0%, 96%);
 }
@@ -35,6 +36,28 @@ body {
     font-family: 'Source Sans Pro', Tahoma, sans-serif;
 }
 
+/* Text ends with three dots upon reaching certain point (236px of width) */
+.bookmark-block h1,
+.bookmarks-list-item-title {
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	width: 236px;
+}
+
+.bookmark-block-placeholder h1 {
+    width: auto;
+}
+
+.bookmark-block h1 {
+    font-size: clamp(1rem, 2vw, 2.5rem);
+}
+
+.modal-header h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
 /* ===============
 LAYOUT
 ================== */
@@ -45,6 +68,8 @@ LAYOUT
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    position: sticky;
+    top: 0;
     background-color: var(--clr-accent);
     width: 100%;
     min-height: 5rem;
@@ -74,15 +99,17 @@ LAYOUT
 
 .bookmarks-container {
     padding-top: 10rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .bookmark-block {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     padding: 1rem 2rem;
     gap: 1rem;
@@ -90,6 +117,11 @@ LAYOUT
     color: var(--clr-fg);
     text-decoration: none;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.bookmark-block-placeholder {
+    flex-grow: 1;
 }
 
 .bookmark-block-icon {
@@ -107,8 +139,6 @@ LAYOUT
     display: flex;
     flex-direction: column;
     list-style: none;
-    max-height: 300px;
-    overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--clr-accent) #ffffff;
 }
@@ -162,7 +192,7 @@ LAYOUT
 
 .bookmarks-list-item-remove-btn {
     color: white;
-    background-color: hsl(0, 80%, 60%);
+    background-color: var(--clr-warning);
 }
 
 .bookmarks-list-item button i {
@@ -200,13 +230,14 @@ dialog::backdrop {
 .modal-content {
     max-width: 90%;
     margin: 0 auto;
+    padding-inline: .5rem;
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0;
+    padding-block-start: 2rem;
 }
 
 .modal-header .modal-close-btn {
@@ -219,7 +250,13 @@ dialog::backdrop {
 }
 
 .modal-content {
-    padding-bottom: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-block: 2rem;
+}
+
+.modal-section:not(.modal-section:nth-child(1)) {
+    padding-block-start: 1rem;
 }
 
 .modal-form {
@@ -232,6 +269,7 @@ dialog::backdrop {
     border: 1px solid hsl(0, 0%, 86%);
     border-radius: 15px;
     padding: .2em .3em;
+    max-height: 40px;
 }
 
 .modal-form input:focus {
@@ -277,6 +315,38 @@ dialog::backdrop {
     box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
 }
 
+/* Modal exclusive styles - settings modal */
+
+.settings-modal-layout-options-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 /* ===============
 MEDIA QUERIES
 ================== */
+
+@media (max-width: 600px) {
+
+    dialog {
+        min-width: 85%;
+    }
+
+    .root {
+        width: 90%;
+    }
+
+    .modal-form {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .root {
+        width: 98%;
+    }
+
+}
