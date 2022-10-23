@@ -33,7 +33,7 @@ TYPOGRAPHY
 ================== */
 
 body {
-    font-family: 'Source Sans Pro', Tahoma, sans-serif;
+    font-family: 'Source Sans Pro', 'Trebuchet MS', sans-serif;
 }
 
 /* Text ends with three dots upon reaching certain point (236px of width) */
