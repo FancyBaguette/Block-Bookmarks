@@ -1,4 +1,5 @@
-# 😎 App rework in progress!
+# 🏗 App rework in progress!
+*I tried to rework the app so that it uses URL api but i'm going to change it back to use regular objects soon*
 
 <!-- # 🧱📚 Block Bookmarks
 Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too.
