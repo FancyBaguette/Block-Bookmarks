@@ -2,7 +2,7 @@
 Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too.
 
 ## 🏗 Work in progress
-Quite a lot of features not implemented yet. Incoming features include:
+Quite a few features not implemented yet. Incoming features include:
 - Wiping all bookmarks at once
 - App settings with customization options
 - Improved accessibility
@@ -22,7 +22,9 @@ Entering the bookmark's URL is required. You're also given the option to enter t
 ### - Use the "Manage bookmarks" menu to edit and remove bookmarks
 In the *Manage bookmarks* menu you can edit the URL and the title of a specific bookmark or remove it
 
-## 🐞 Bugs
-The app is still in development, so if you encounter any bugs...
-- Try to clear the local storage first (type `localStorage.clear()` in the console)
+## 🐞 Troubleshooting
+
+- If the icons don't load it's probably something to do with your browser's privacy settings and/or extensions. Make sure to check the console.
+- If your bookmarks don't load there may have been a change in how they're saved. In that case, clear your local storage in the console with `localStorage.clear()`. This will clear all of your saved bookmarks.
+
 
