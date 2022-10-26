@@ -8,11 +8,19 @@ const editBookmarkModal = document.getElementById('edit-bookmark-modal');
 // const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 function openModal(modal) {
+    closeAllModals();
     modal.showModal();
 }
 
 function closeModal(modal) {
     modal.close();
+}
+
+// So that dialogs don't overlap each other in case of opening a modal from another one
+function closeAllModals() {
+    document.querySelectorAll('.app-modal').forEach(dialog => {
+        dialog.close();
+    })
 }
 
 // Event listeners
@@ -122,6 +130,20 @@ function removeBookmark(index) {
 
 // App settings
 
+// TESTING
+
+const appSettingsForm = document.getElementById('app-settings-form');
+
+appSettingsForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const appSettingsFormData = new FormData(appSettingsForm);
+
+    document.querySelector('body').style.backgroundColor = appSettingsFormData.get('color-input');
+
+    closeModal(settingsModal)
+})
+
 // Rendering the bookmarks
 
 function loadBlackAltIcon(e) {
@@ -148,7 +170,7 @@ function renderBookmarks(container, list, array) {
             `
                 <a class="bookmark-block" href="https://${bookmark.url}">
                     <h1>${bookmark.title}</h1>
-                    <img class="bookmark-block-icon" src="${getFavicon(bookmark.url)}" onerror="loadWhiteAltIcon(this)">
+                    <img class="bookmark-block-icon" src="${getFavicon(bookmark.url)}" onerror="loadWhiteAltIcon(this)" aria-hidden="true">
                 </a>
             `;
 
@@ -156,12 +178,12 @@ function renderBookmarks(container, list, array) {
             `
                 <li class="bookmarks-list-item">
                     <div class="bookmarks-list-item-meta">
-                        <img class="bookmarks-list-item-icon" src="${getFavicon(bookmark.url)}" onerror="loadBlackAltIcon(this)">
+                        <img class="bookmarks-list-item-icon" src="${getFavicon(bookmark.url)}" onerror="loadBlackAltIcon(this)" aria-hidden="true">
                         <p class="bookmarks-list-item-title">${bookmark.title}</p>
                     </div>
                     <div class="bookmarks-list-item-actions">
-                        <button class="bookmarks-list-item-remove-btn" onclick="removeBookmark(${index})"><i class="fa-solid fa-trash"></i>Remove</button>
-                        <button class="bookmarks-list-item-edit-btn" onclick="editBookmark(${index})"><i class="fa-solid fa-pencil"></i>Edit</button>
+                        <button class="bookmarks-list-item-remove-btn" onclick="removeBookmark(${index})"><i class="fa-solid fa-trash" aria-hidden="true"></i>Remove</button>
+                        <button class="bookmarks-list-item-edit-btn" onclick="editBookmark(${index})"><i class="fa-solid fa-pencil" aria-hidden="true"></i>Edit</button>
                     </div>
                 </li>
             `

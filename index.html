@@ -69,8 +69,8 @@
                 <button class="modal-close-btn" data-modal="manage-bookmarks-modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
-            <div class="modal-section">
-                <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-section">
                     <ul class="bookmarks-list" id="bookmarks-list"></ul>
                 </div>
             </div>
@@ -120,11 +120,18 @@
             </div>
 
             <div class="modal-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, repellat.
+                <form action="#" class="app-settings-form" id="app-settings-form">
+                    <div class="modal-section">
+                        <h2 class="modal-section-title">Test color</h2>
+                        <p class="modal-section-subtitle">Choose your preferred body tag color</p>
+
+                        <input type="color" name="color-input" id="color-input">
+                    </div>
+                </form>
             </div>
 
             <div class="modal-footer">
-                <button class="modal-footer-btn" type="submit" form="settings-form">Apply settings</button>
+                <button class="modal-footer-btn" type="submit" form="app-settings-form">Apply settings</button>
             </div>
 
         </div>
