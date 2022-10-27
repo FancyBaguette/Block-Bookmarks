@@ -45,19 +45,6 @@ const bookmarksList = document.getElementById('bookmarks-list');
 let bookmarksArray = [];
 let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
 
-// Getting bookmarks from local storage
-if (localStorageBookmarks) {
-    bookmarksArray = localStorageBookmarks;
-}
-
-let appSettings = {};
-let localStorageAppSettings = JSON.parse(localStorage.getItem('blockBookmarksAppSettings'));
-
-if (localStorageAppSettings) {
-    console.log('foo')
-    appSettings = localStorageAppSettings;
-}
-
 // Adding a new bookmark
 
 const newBookmarkForm = document.querySelector('.new-bookmark-form');
@@ -135,28 +122,6 @@ function removeBookmark(index) {
     localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
     renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
 }
-
-// App settings
-
-function applySettings(settingsObject) {
-    document.querySelector(':root').style.setProperty('--clr-bg', settingsObject.backgroundColor);
-}
-
-const appSettingsForm = document.getElementById('app-settings-form');
-
-appSettingsForm.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const appSettingsFormData = new FormData(appSettingsForm);
-
-    appSettings.backgroundColor = appSettingsFormData.get('color-input');
-
-    localStorage.setItem('blockBookmarksAppSettings', JSON.stringify(appSettings));
-
-    applySettings(appSettings);
-
-    closeModal(settingsModal)
-})
 
 // Rendering the bookmarks
 
