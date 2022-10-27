@@ -147,11 +147,11 @@ appSettingsForm.addEventListener('submit', e => {
 // Rendering the bookmarks
 
 function loadBlackAltIcon(e) {
-    e.src = "./assets/img/desktop-icon-black.svg";
+    e.src = "./images/desktop-icon-black.svg";
 }
 
 function loadWhiteAltIcon(e) {
-    e.src = "./assets/img/desktop-icon-white.svg";
+    e.src = "./images/desktop-icon-white.svg";
 }
 
 function getFavicon(url) {
@@ -191,10 +191,10 @@ function renderBookmarks(container, list, array) {
     } else {
         container.innerHTML = 
         `
-            <a class="bookmark-block bookmark-block-placeholder" onclick="openModal(newBookmarkModal)">
+            <div class="bookmark-block bookmark-block-placeholder" onclick="openModal(newBookmarkModal)">
                 <h1>You don't have any bookmarks</h1>
                 <p>Click here to add a new one</p>
-            </a>
+            </div>
         `;
         list.innerHTML = `<p>You don't have any bookmarks. Add one with the button below.</p>`
     }
