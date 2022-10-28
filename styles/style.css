@@ -93,6 +93,17 @@ LAYOUT
     border: 0;
     padding: 0;
     background-color: white;
+    transition: font-size 100ms;
+}
+
+.header-btn:hover,
+.header-btn:focus {
+    font-size: calc(var(--header-btn-size) - 2.2rem);
+}
+
+.header-btn:focus {
+    outline: 0;
+    box-shadow: 0px 0px 20px 0px var(--clr-accent);
 }
 
 /* -- Bookmark blocks -- */

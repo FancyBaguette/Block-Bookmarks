@@ -45,6 +45,10 @@ const bookmarksList = document.getElementById('bookmarks-list');
 let bookmarksArray = [];
 let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
 
+if (localStorageBookmarks) {
+    bookmarksArray = localStorageBookmarks;
+}
+
 // Adding a new bookmark
 
 const newBookmarkForm = document.querySelector('.new-bookmark-form');
