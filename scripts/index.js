@@ -181,4 +181,3 @@ function renderBookmarks(container, list, array) {
 }
 
 renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
-applySettings(appSettings);
