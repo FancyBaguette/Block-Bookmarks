@@ -93,17 +93,15 @@ LAYOUT
     border: 0;
     padding: 0;
     background-color: white;
-    transition: font-size 100ms;
 }
 
-.header-btn:hover,
-.header-btn:focus {
-    font-size: calc(var(--header-btn-size) - 2.2rem);
+.header-btn i {
+    transition: all 100ms ease-out;
 }
 
-.header-btn:focus {
-    outline: 0;
-    box-shadow: 0px 0px 20px 0px var(--clr-accent);
+.header-btn:hover i,
+.header-btn:focus i {
+    transform: scale(1.3);
 }
 
 /* -- Bookmark blocks -- */
@@ -129,6 +127,13 @@ LAYOUT
     text-decoration: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: box-shadow 150ms;
+}
+
+.bookmark-block:hover,
+.bookmark-block:focus {
+    outline: 0;
+    box-shadow: 0px 0px 10px 0px hsla(264, 3%, 69%, 0.7);
 }
 
 .bookmark-block-placeholder {
@@ -313,25 +318,11 @@ dialog::backdrop {
     color: white;
 }
 
-/* .modal-footer-btn:hover,
-.modal-footer-btn:focus {
-    outline: 0;
-    box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
-} */
-
 .app-modal button:hover,
 .app-modal button:focus,
 .app-modal input:focus {
     outline: 0;
-    box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
-}
-
-/* Modal exclusive styles - settings modal */
-
-.settings-modal-layout-options-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.3);
 }
 
 /* ===============

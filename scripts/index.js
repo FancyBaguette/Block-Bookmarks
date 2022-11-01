@@ -1,10 +1,10 @@
 // === DIALOGS ===
 
 // DOM nodes
-const newBookmarkModal = document.getElementById('new-bookmark-modal');
-const manageBookmarksModal = document.getElementById('manage-bookmarks-modal');
-const settingsModal = document.getElementById('settings-modal');
-const editBookmarkModal = document.getElementById('edit-bookmark-modal');
+const newBookmarkModal = document.querySelector('#new-bookmark-modal');
+const manageBookmarksModal = document.querySelector('#manage-bookmarks-modal');
+const settingsModal = document.querySelector('#settings-modal');
+const editBookmarkModal = document.querySelector('#edit-bookmark-modal');
 // const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 function openModal(modal) {
@@ -39,8 +39,8 @@ document.querySelectorAll('.modal-close-btn').forEach(e => {
 
 // === MAIN SECTION ===
 
-const bookmarksContainer = document.querySelector('.bookmarks-container');
-const bookmarksList = document.getElementById('bookmarks-list');
+const bookmarksContainer = document.querySelector('#bookmarks-container');
+const bookmarksList = document.querySelector('#bookmarks-list');
 
 let bookmarksArray = [];
 let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
@@ -51,7 +51,7 @@ if (localStorageBookmarks) {
 
 // Adding a new bookmark
 
-const newBookmarkForm = document.querySelector('.new-bookmark-form');
+const newBookmarkForm = document.querySelector('#new-bookmark-form');
 
 newBookmarkForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -85,12 +85,12 @@ function editBookmark(index) {
     closeModal(manageBookmarksModal);
     openModal(editBookmarkModal);
 
-    document.getElementById('edit-bookmark-modal-bookmark-id').textContent = `Editing bookmark #${index+1}`
+    document.querySelector('#edit-bookmark-modal-bookmark-id').textContent = `Editing bookmark #${index+1}`
 
-    const editBookmarkForm = document.getElementById('edit-bookmark-form');
+    const editBookmarkForm = document.querySelector('#edit-bookmark-form');
 
-    document.getElementById('edit-bookmark-form-url-input').value = bookmarksArray[index].url;
-    document.getElementById('edit-bookmark-form-title-input').value = bookmarksArray[index].title;
+    document.querySelector('#edit-bookmark-form-url-input').value = bookmarksArray[index].url;
+    document.querySelector('#edit-bookmark-form-title-input').value = bookmarksArray[index].title;
 
     editBookmarkForm.addEventListener('submit', (e) => {
         e.preventDefault();
