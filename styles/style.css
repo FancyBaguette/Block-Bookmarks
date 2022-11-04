@@ -320,6 +320,10 @@ dialog::backdrop {
     color: white;
 }
 
+.modal-footer-btn-warning {
+    background-color: var(--clr-warning);
+}
+
 .app-modal button:hover,
 .app-modal button:focus,
 .app-modal input:focus {

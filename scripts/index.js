@@ -127,6 +127,27 @@ function removeBookmark(index) {
     renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
 }
 
+// Wiping all bookmarks at once
+
+const wipeAllBookmarksForm = document.querySelector('#wipe-all-bookmarks-form');
+
+wipeAllBookmarksForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const confirmationInput = document.querySelector('#wipe-confirmation');
+
+    if (confirmationInput.value === 'I Understand') {
+        wipeAllBookmarks();
+    } 
+})
+
+function wipeAllBookmarks(array) {
+    array = [];
+    localStorage.setItem('blockBookmarks', JSON.stringify(array));
+    wipeAllBookmarksForm.reset();
+    location.reload();
+}
+
 // Rendering the bookmarks
 
 function loadBlackAltIcon(e) {

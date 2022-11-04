@@ -77,6 +77,7 @@
             </div>
 
             <div class="modal-footer">
+                <button class="modal-footer-btn modal-footer-btn-warning modal-open-btn" data-modal="wipe-all-bookmarks-modal">Wipe all</button>
                 <button class="modal-footer-btn modal-open-btn" data-modal="new-bookmark-modal">Add a new one</button>
             </div>
 
@@ -128,6 +129,36 @@
 
             <div class="modal-footer">
                 <button class="modal-footer-btn" type="submit" form="app-settings-form">Apply settings</button>
+            </div>
+
+        </div>
+    </dialog> 
+
+    <dialog class="app-modal" id="wipe-all-bookmarks-modal">
+        <div class="modal-body">
+
+            <div class="modal-header">
+                <h1>Wipe all bookmarks</h1>
+                <button class="modal-close-btn" data-modal="wipe-all-bookmarks-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-section">
+                    <p>
+                        You're about to wipe <strong>all</strong> of your current bookmarks with a single click.<br>
+                        In the box below, type "I Understand" in order to continue.
+                    </p>
+                </div>
+    
+                <div class="modal-section">
+                    <form action="#" class="modal-form" id="wipe-all-bookmarks-form">
+                        <input type="text" name="wipe-confirmation" id="wipe-confirmation" required aria-label="Confirmation input" placeholder="I Understand (case sensitive)">
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-footer-btn modal-footer-btn-warning" type="submit" form="wipe-all-bookmarks-form">Wipe</button>
             </div>
 
         </div>

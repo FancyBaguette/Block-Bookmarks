@@ -14,10 +14,9 @@ Every time you'll click "WEB BROWSER" in the Steam overlay or open a new tab in 
 ### - Use the "Add a new bookmark" menu to add a new bookmark
 Entering the bookmark's URL is required. You're also given the option to enter the bookmark's title although it's optional. If you don't provide the title, the previously entered URL becomes the title.
 ### - Use the "Manage bookmarks" menu to edit and remove bookmarks
-In the *Manage bookmarks* menu you can edit the URL and the title of a specific bookmark or remove it
+In the *Manage bookmarks* menu you can edit the URL and the title of a specific bookmark or remove it. You can also wipe **all** of the bookmarks at once, using the 'Wipe all' menu.
 
 ## ✨ Upcoming features
-- Wiping all bookmarks at once
 - App settings with customization options
 
 ## 🐞 Troubleshooting
