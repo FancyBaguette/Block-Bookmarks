@@ -82,6 +82,7 @@ newBookmarkForm.addEventListener('submit', (e) => {
 // Editing a bookmark 
 
 function editBookmark(index) {
+    bookmarkIndex = index;
     closeModal(manageBookmarksModal);
     openModal(editBookmarkModal);
 
@@ -94,6 +95,7 @@ function editBookmark(index) {
 
     editBookmarkForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        e.stopImmediatePropagation();
 
         const editBookmarkFormData = new FormData(editBookmarkForm);
 
@@ -101,11 +103,11 @@ function editBookmark(index) {
         const bookmarkTitle = editBookmarkFormData.get('bookmark-title');
 
         if (bookmarkTitle === "") {
-            bookmarksArray[index].url = bookmarkUrl.split('https://').pop();
-            bookmarksArray[index].title = bookmarksArray[index].url;
+            bookmarksArray[bookmarkIndex].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[bookmarkIndex].title = bookmarksArray[bookmarkIndex].url;
         } else {
-            bookmarksArray[index].url = bookmarkUrl.split('https://').pop();
-            bookmarksArray[index].title = bookmarkTitle;
+            bookmarksArray[bookmarkIndex].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[bookmarkIndex].title = bookmarkTitle;
         }
 
         localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
