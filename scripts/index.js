@@ -1,11 +1,9 @@
-// === DIALOGS ===
+// -> Dialogs <-
 
-// DOM nodes
 const newBookmarkModal = document.querySelector('#new-bookmark-modal');
 const manageBookmarksModal = document.querySelector('#manage-bookmarks-modal');
 const settingsModal = document.querySelector('#settings-modal');
 const editBookmarkModal = document.querySelector('#edit-bookmark-modal');
-// const wipeAllBookmarksModal = document.querySelector(".wipe-bookmarks-modal");
 
 function openModal(modal) {
     closeAllModals();
@@ -37,7 +35,7 @@ document.querySelectorAll('.modal-close-btn').forEach(e => {
     })
 })
 
-// === MAIN SECTION ===
+// -> Main section <-
 
 const bookmarksContainer = document.querySelector('#bookmarks-container');
 const bookmarksList = document.querySelector('#bookmarks-list');
@@ -53,7 +51,7 @@ if (localStorageBookmarks) {
 
 const newBookmarkForm = document.querySelector('#new-bookmark-form');
 
-newBookmarkForm.addEventListener('submit', (e) => {
+newBookmarkForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const newBookmarkFormData = new FormData(newBookmarkForm);
@@ -73,7 +71,7 @@ newBookmarkForm.addEventListener('submit', (e) => {
 
     bookmarksArray.push(newBookmark);
     localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
-    renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+    renderBookmarks();
 
     newBookmarkForm.reset();
     closeModal(newBookmarkModal);
@@ -93,7 +91,7 @@ function editBookmark(index) {
     document.querySelector('#edit-bookmark-form-url-input').value = bookmarksArray[index].url;
     document.querySelector('#edit-bookmark-form-title-input').value = bookmarksArray[index].title;
 
-    editBookmarkForm.addEventListener('submit', (e) => {
+    editBookmarkForm.addEventListener('submit', e => {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -111,7 +109,7 @@ function editBookmark(index) {
         }
 
         localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
-        renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+        renderBookmarks();
 
         editBookmarkForm.reset();
         closeModal(editBookmarkModal);
@@ -126,14 +124,14 @@ function editBookmark(index) {
 function removeBookmark(index) {
     bookmarksArray.splice(index, 1);
     localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
-    renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+    renderBookmarks();
 }
 
 // Wiping all bookmarks at once
 
 const wipeAllBookmarksForm = document.querySelector('#wipe-all-bookmarks-form');
 
-wipeAllBookmarksForm.addEventListener('submit', (e) => {
+wipeAllBookmarksForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const confirmationInput = document.querySelector('#wipe-confirmation');
@@ -143,9 +141,9 @@ wipeAllBookmarksForm.addEventListener('submit', (e) => {
     } 
 })
 
-function wipeAllBookmarks(array) {
-    array = [];
-    localStorage.setItem('blockBookmarks', JSON.stringify(array));
+function wipeAllBookmarks() {
+    bookmarksArray = [];
+    localStorage.setItem('blockBookmarks', JSON.stringify(bookmarksArray));
     wipeAllBookmarksForm.reset();
     location.reload();
 }
@@ -164,15 +162,15 @@ function getFavicon(url) {
     return 'https://' + url.split("/")[0] + "/favicon.ico";
 }
 
-function renderBookmarks(container, list, array) {
+function renderBookmarks() {
 
-    container.innerHTML = '';
-    list.innerHTML = '';
+    bookmarksContainer.innerHTML = '';
+    bookmarksList.innerHTML = '';
 
-    if (array.length > 0) {
+    if (bookmarksArray.length > 0) {
 
-        array.forEach((bookmark, index) => {
-            container.innerHTML +=
+        bookmarksArray.forEach((bookmark, index) => {
+            bookmarksContainer.innerHTML +=
             `
                 <a class="bookmark-block" href="https://${bookmark.url}">
                     <h1>${bookmark.title}</h1>
@@ -180,7 +178,7 @@ function renderBookmarks(container, list, array) {
                 </a>
             `;
 
-            list.innerHTML +=
+            bookmarksList.innerHTML +=
             `
                 <li class="bookmarks-list-item">
                     <div class="bookmarks-list-item-meta">
@@ -195,16 +193,16 @@ function renderBookmarks(container, list, array) {
             `
         })
     } else {
-        container.innerHTML = 
+        bookmarksContainer.innerHTML = 
         `
             <div class="bookmark-block bookmark-block-placeholder" onclick="openModal(newBookmarkModal)">
                 <h1>You don't have any bookmarks</h1>
                 <p>Click here to add a new one</p>
             </div>
         `;
-        list.innerHTML = `<p>You don't have any bookmarks. Add one with the button below.</p>`
+        bookmarksList.innerHTML = `<p>You don't have any bookmarks. Add one with the button below.</p>`
     }
 
 }
 
-renderBookmarks(bookmarksContainer, bookmarksList, bookmarksArray);
+renderBookmarks();
