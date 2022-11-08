@@ -93,16 +93,15 @@ LAYOUT
     border: 0;
     padding: 0;
     background-color: white;
+    transition: box-shadow 200ms ease-in-out;
 }
 
-.header-btn i {
-    transition: all 100ms ease-out;
-}
-
-.header-btn:focus,
 .header-btn:hover {
     box-shadow: 0px 0px 10px 0px var(--clr-accent);
-    outline: 2px groove var(--clr-accent);
+}
+
+.header-btn:focus {
+    outline: 2px solid var(--clr-accent);
     outline-offset: -3px;
 }
 
