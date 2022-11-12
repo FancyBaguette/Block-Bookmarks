@@ -1,4 +1,5 @@
 # 📚 Block Bookmarks
+**[🌐 Visit the website](https://fancybaguette.github.io/block-bookmarks/)**
 Simple tool intended for easier site navigation in the Steam overlay web browser. I created it so that i don't have to google up the site i wanted to go to every time i launch the overlay and so that you don't have to do it too. It's a very simple app thanks to which i practiced my javascript skills, mainly working with the local storage.
 
 ## 🛠 Setup
