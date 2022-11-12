@@ -23,13 +23,13 @@ function closeAllModals() {
 
 // Event listeners
 
-document.querySelectorAll('.modal-open-btn').forEach(e => {
+document.querySelectorAll('.modal-open-btn').forEach((e) => {
     e.addEventListener('click', () => {
         openModal(document.getElementById(e.dataset.modal))
     })
 })
 
-document.querySelectorAll('.modal-close-btn').forEach(e => {
+document.querySelectorAll('.modal-close-btn').forEach((e) => {
     e.addEventListener('click', () => {
         closeModal(document.getElementById(e.dataset.modal))
     })
@@ -51,7 +51,7 @@ if (localStorageBookmarks) {
 
 const newBookmarkForm = document.querySelector('#new-bookmark-form');
 
-newBookmarkForm.addEventListener('submit', e => {
+newBookmarkForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const newBookmarkFormData = new FormData(newBookmarkForm);
@@ -91,7 +91,7 @@ function editBookmark(index) {
     document.querySelector('#edit-bookmark-form-url-input').value = bookmarksArray[index].url;
     document.querySelector('#edit-bookmark-form-title-input').value = bookmarksArray[index].title;
 
-    editBookmarkForm.addEventListener('submit', e => {
+    editBookmarkForm.addEventListener('submit', (e) => {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -131,7 +131,7 @@ function removeBookmark(index) {
 
 const wipeAllBookmarksForm = document.querySelector('#wipe-all-bookmarks-form');
 
-wipeAllBookmarksForm.addEventListener('submit', e => {
+wipeAllBookmarksForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const confirmationInput = document.querySelector('#wipe-confirmation');
