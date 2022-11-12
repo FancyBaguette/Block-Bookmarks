@@ -132,13 +132,31 @@
             </div>
 
             <div class="modal-content">
-                <form action="#" class="app-settings-form" id="app-settings-form">
-                    <p>This feature had not been implemented yet</p>
-                </form>
+                <div class="modal-section">
+                    <h2>Choose a color theme</h2>
+                    <form action="#" class="app-settings-form">
+                        <div>
+                            <label for="dark-theme">Dark</label>
+                            <input type="radio" name="theme" id="dark-theme" checked>
+                        </div>
+                        
+                        <div>
+                            <label for="light-theme">Light</label>
+                            <input type="radio" name="theme" id="light-theme">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-section">
+                    <h2>Choose the accent color</h2>
+                    <form action="#" class="app-settings-form" id="accent-color-form">
+                        <input type="color" name="accent-color" id="accent-color">
+                    </form>
+                </div>
             </div>
 
             <div class="modal-footer">
-                <button class="modal-footer-btn" type="submit" form="app-settings-form">Apply settings</button>
+                <button class="modal-footer-btn modal-close-btn" data-modal="settings-modal" aria-label="Close modal">Close</button>
             </div>
 
         </div>

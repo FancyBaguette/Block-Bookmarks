@@ -1,5 +1,6 @@
 // -> Dialogs <-
 
+
 const newBookmarkModal = document.querySelector('#new-bookmark-modal');
 const manageBookmarksModal = document.querySelector('#manage-bookmarks-modal');
 const settingsModal = document.querySelector('#settings-modal');
@@ -16,7 +17,7 @@ function closeModal(modal) {
 
 // So that dialogs don't overlap each other in case of opening a modal from another one
 function closeAllModals() {
-    document.querySelectorAll('.app-modal').forEach(dialog => {
+    document.querySelectorAll('.app-modal').forEach((dialog) => {
         dialog.close();
     })
 }
@@ -35,19 +36,67 @@ document.querySelectorAll('.modal-close-btn').forEach((e) => {
     })
 })
 
+
+
+
+
+
 // -> Main section <-
+
 
 const bookmarksContainer = document.querySelector('#bookmarks-container');
 const bookmarksList = document.querySelector('#bookmarks-list');
 
 let bookmarksArray = [];
-let localStorageBookmarks = JSON.parse(localStorage.getItem("blockBookmarks"));
+let localStorageBookmarks = JSON.parse(localStorage.getItem('blockBookmarks'));
 
 if (localStorageBookmarks) {
     bookmarksArray = localStorageBookmarks;
 }
 
+
+// App settings
+
+
+const colorThemes = document.querySelectorAll('[name="theme"');
+
+colorThemes.forEach((colorTheme) => {
+    colorTheme.addEventListener('change', () => {
+        localStorage.setItem('blockBookmarksTheme', colorTheme.id);
+        document.documentElement.className = colorTheme.id;
+    });
+})
+
+function setTheme() {
+    const activeTheme = localStorage.getItem('blockBookmarksTheme');
+    colorThemes.forEach((themeOption) => {
+        if (themeOption.id === activeTheme) {
+            themeOption.checked = true;
+        }
+    });
+
+    document.documentElement.className = activeTheme;
+}
+
+const accentColorPicker = document.querySelector('#accent-color');
+
+accentColorPicker.addEventListener('change', () => {
+    localStorage.setItem('blockBookmarksAccentColor', accentColorPicker.value);
+    document.documentElement.style.setProperty('--clr-accent', accentColorPicker.value);
+});
+
+function setAccentColor() {
+    document.documentElement.style.setProperty('--clr-accent', localStorage.getItem('blockBookmarksAccentColor'));
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTheme();
+    setAccentColor();
+});
+
+
 // Adding a new bookmark
+
 
 const newBookmarkForm = document.querySelector('#new-bookmark-form');
 
@@ -77,7 +126,9 @@ newBookmarkForm.addEventListener('submit', (e) => {
     closeModal(newBookmarkModal);
 });
 
+
 // Editing a bookmark 
+
 
 function editBookmark(index) {
     bookmarkIndex = index;
@@ -119,7 +170,9 @@ function editBookmark(index) {
 
 }
 
+
 // Removing a bookmark
+
 
 function removeBookmark(index) {
     bookmarksArray.splice(index, 1);
@@ -127,7 +180,9 @@ function removeBookmark(index) {
     renderBookmarks();
 }
 
+
 // Wiping all bookmarks at once
+
 
 const wipeAllBookmarksForm = document.querySelector('#wipe-all-bookmarks-form');
 
@@ -148,7 +203,9 @@ function wipeAllBookmarks() {
     location.reload();
 }
 
+
 // Rendering the bookmarks
+
 
 function loadBlackAltIcon(e) {
     e.src = "./images/desktop-icon-black.svg";

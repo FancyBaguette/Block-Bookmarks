@@ -1,12 +1,30 @@
 /* ===============
-VARIABLES
+VARIABLES & THEMES
 ================== */
 
+.dark-theme,
 :root {
     --clr-accent: hsl(205, 67%, 48%);
-    --clr-warning: hsl(0, 80%, 60%);
-    --clr-bg: hsl(210, 11%, 11%);
+    --clr-body-bg: hsl(210, 11%, 11%);
+    --clr-card-bg: hsl(255, 6%, 13%);
     --clr-fg: hsl(0, 0%, 96%);
+    --clr-warning: hsl(0, 80%, 60%);
+
+    --clr-modal-bg: hsl(255, 6%, 13%);
+    --clr-modal-contrast-bg: hsl(240, 2%, 16%);
+}
+
+.light-theme {
+    --clr-body-bg: hsl(0, 0%, 96%);
+    --clr-card-bg: none;
+    --clr-fg: hsl(210, 11%, 11%);
+
+    --clr-modal-bg: #fff;
+    --clr-modal-contrast-bg: hsl(260, 16%, 96%);
+}
+
+.light-theme .bookmark-block {
+    border: 2px solid #e3e3e3;
 }
 
 /* ===============
@@ -14,7 +32,7 @@ GENERAL
 ================== */
 
 body {
-    background-color: var(--clr-bg);
+    background-color: var(--clr-body-bg);
     color: var(--clr-fg);
 }
 
@@ -36,7 +54,6 @@ body {
     font-family: 'Source Sans Pro', 'Trebuchet MS', sans-serif;
 }
 
-/* Text ends with three dots upon reaching certain point (236px of width) */
 .bookmark-block h1,
 .bookmarks-list-item-title {
     overflow: hidden;
@@ -81,7 +98,7 @@ LAYOUT
 .site-header-buttons-container {
     display: flex;
     gap: 2rem;
-    transform: translateY(32px);
+    transform: translateY(2rem);
 }
 
 .header-btn {
@@ -123,7 +140,7 @@ LAYOUT
     flex-direction: column;
     padding: 1rem 2rem;
     gap: 1rem;
-    background-color: rgb(33, 32, 36);
+    background-color: var(--clr-card-bg);
     color: var(--clr-fg);
     text-decoration: none;
     border-radius: 10px;
@@ -220,7 +237,7 @@ LAYOUT
 
 .github-link {
     text-decoration: none;
-    color: white;
+    color: var(--clr-fg);
     display: block;
     position: absolute;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -243,6 +260,12 @@ dialog::backdrop {
     background-color: hsla(210, 100%, 0%, 0.5);
 }
 
+dialog,
+.modal-body {
+    background-color: var(--clr-modal-bg);
+    color: var(--clr-fg);
+}
+
 .modal-header,
 .modal-content {
     max-width: 90%;
@@ -258,7 +281,8 @@ dialog::backdrop {
 }
 
 .modal-header .modal-close-btn {
-    background-color: hsl(260, 16%, 96%);
+    background-color: var(--clr-modal-contrast-bg);
+    color: var(--clr-fg);
     border: 0;
     border-radius: 10px;
     min-height: 40px;
@@ -299,7 +323,7 @@ dialog::backdrop {
 }
 
 .modal-footer {
-    background-color: hsl(260, 16%, 96%);
+    background-color: var(--clr-modal-contrast-bg);
     padding: 1rem 2rem;
     display: flex;
     justify-content: flex-end;
@@ -328,6 +352,14 @@ dialog::backdrop {
 .app-modal input:focus {
     outline: 0;
     box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.3);
+}
+
+/* Modal specific styles */
+
+.app-settings-form {
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ===============
