@@ -111,10 +111,10 @@ newBookmarkForm.addEventListener('submit', (e) => {
     const bookmarkTitle = newBookmarkFormData.get('bookmark-title');
 
     if (bookmarkTitle === "") {
-        newBookmark.url = bookmarkUrl.split('https://').pop();
+        newBookmark.url = new URL(`https://${bookmarkUrl}`).hostname;
         newBookmark.title = newBookmark.url;
     } else {
-        newBookmark.url = bookmarkUrl.split('https://').pop();
+        newBookmark.url = new URL(`https://${bookmarkUrl}`).hostname;
         newBookmark.title = bookmarkTitle;
     }
 
@@ -152,10 +152,10 @@ function editBookmark(index) {
         const bookmarkTitle = editBookmarkFormData.get('bookmark-title');
 
         if (bookmarkTitle === "") {
-            bookmarksArray[bookmarkIndex].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[bookmarkIndex].url = new URL(`https://${bookmarkUrl}`).hostname;
             bookmarksArray[bookmarkIndex].title = bookmarksArray[bookmarkIndex].url;
         } else {
-            bookmarksArray[bookmarkIndex].url = bookmarkUrl.split('https://').pop();
+            bookmarksArray[bookmarkIndex].url = new URL(`https://${bookmarkUrl}`).hostname;
             bookmarksArray[bookmarkIndex].title = bookmarkTitle;
         }
 
@@ -216,7 +216,7 @@ function loadWhiteAltIcon(e) {
 }
 
 function getFavicon(url) {
-    return 'https://' + url.split("/")[0] + "/favicon.ico";
+    return new URL(`https://${url}`).href + "/favicon.ico";
 }
 
 function renderBookmarks() {
