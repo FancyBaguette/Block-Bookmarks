@@ -108,7 +108,7 @@ LAYOUT
     width: var(--header-btn-size);
     height: var(--header-btn-size);
     font-size: calc(var(--header-btn-size) - 2.5rem);
-    border-radius: 100%;
+    border-radius: 50%;
     border: 0;
     padding: 0;
     background-color: white;
@@ -247,7 +247,7 @@ LAYOUT
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     bottom: 1%;
     right: 1%;
-    border-radius: 100%;
+    border-radius: 50%;
     z-index: 999;
 }
 
@@ -378,6 +378,15 @@ LAYOUT
     padding-block: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.app-settings-form input[type='color'] {
+    appearance: none;
+    background-color: transparent;
+    max-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
+    border: none;
 }
 
 /* ===============
