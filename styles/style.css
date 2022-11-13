@@ -198,7 +198,7 @@ LAYOUT
 }
 
 .bookmarks-list-item:not(.bookmarks-list-item:nth-child(1)) {
-    border-top: 1px solid #e3e3e3;
+    border-top: 1px solid var(--clr-modal-contrast-bg);
 }
 
 .bookmarks-list-item-meta {
@@ -301,10 +301,13 @@ LAYOUT
     max-height: 300px;
     overflow-y: auto;
     padding-block: 2rem;
+    /* Margin block is set so that the scrollbar doesn't stick to the main close button and the footer */
+    margin-block: .5rem;
 }
 
 .modal-section:not(.modal-section:nth-child(1)) {
     padding-block-start: 1rem;
+    border-top: 2px solid var(--clr-modal-contrast-bg);
 }
 
 .modal-form {

@@ -64,6 +64,7 @@ colorThemes.forEach((colorTheme) => {
     colorTheme.addEventListener('change', () => {
         localStorage.setItem('blockBookmarksTheme', colorTheme.id);
         document.documentElement.className = colorTheme.id;
+        renderBookmarks();
     });
 })
 
@@ -80,7 +81,7 @@ function setTheme() {
 
 const accentColorPicker = document.querySelector('#accent-color');
 
-accentColorPicker.addEventListener('change', () => {
+accentColorPicker.addEventListener('input', () => {
     localStorage.setItem('blockBookmarksAccentColor', accentColorPicker.value);
     document.documentElement.style.setProperty('--clr-accent', accentColorPicker.value);
 });
@@ -206,14 +207,29 @@ function wipeAllBookmarks() {
 
 // Rendering the bookmarks
 
-
-function loadBlackAltIcon(e) {
-    e.src = "./images/desktop-icon-black.svg";
+function loadAltIcon(e) {
+    if (document.documentElement.className === 'dark-theme') {
+        e.src = "./images/desktop-icon-white.svg";
+    } else {
+        e.src = "./images/desktop-icon-black.svg"
+    }
 }
 
-function loadWhiteAltIcon(e) {
-    e.src = "./images/desktop-icon-white.svg";
-}
+// function loadAltIcon(e) {
+//     if (document.documentElement.className === 'dark-theme') {
+//         e.src = "./images/desktop-icon-white.svg";
+//     } else {
+//         e.src = "./images/desktop-icon-black.svg"
+//     }
+// }
+
+// function loadAltIcon(e) {
+//     if (document.documentElement.className === 'dark-theme') {
+//         e.src = "./images/desktop-icon-white.svg";
+//     } else {
+//         e.src = "./images/desktop-icon-black.svg"
+//     }
+// }
 
 function getFavicon(url) {
     return new URL(`https://${url}`).href + "/favicon.ico";
@@ -231,7 +247,7 @@ function renderBookmarks() {
             `
                 <a class="bookmark-block" href="https://${bookmark.url}">
                     <h1>${bookmark.title}</h1>
-                    <img class="bookmark-block-icon" src="${getFavicon(bookmark.url)}" onerror="loadWhiteAltIcon(this)" aria-hidden="true">
+                    <img class="bookmark-block-icon" src="${getFavicon(bookmark.url)}" onerror="loadAltIcon(this)" aria-hidden="true">
                 </a>
             `;
 
@@ -239,7 +255,7 @@ function renderBookmarks() {
             `
                 <li class="bookmarks-list-item">
                     <div class="bookmarks-list-item-meta">
-                        <img class="bookmarks-list-item-icon" src="${getFavicon(bookmark.url)}" onerror="loadBlackAltIcon(this)" aria-hidden="true">
+                        <img class="bookmarks-list-item-icon" src="${getFavicon(bookmark.url)}" onerror="loadAltIcon(this)" aria-hidden="true">
                         <p class="bookmarks-list-item-title">${bookmark.title}</p>
                     </div>
                     <div class="bookmarks-list-item-actions">
