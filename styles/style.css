@@ -60,7 +60,7 @@ body {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
-  	width: 236px;
+    width: 236px;
 }
 
 .bookmark-block-placeholder h1 {
