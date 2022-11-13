@@ -278,7 +278,6 @@ LAYOUT
 .modal-content {
     max-width: 90%;
     margin: 0 auto;
-    /* padding-inline: .5rem; */
 }
 
 .modal-header {
@@ -335,10 +334,15 @@ LAYOUT
 
 .modal-footer {
     background-color: var(--clr-modal-contrast-bg);
-    padding: 1rem 2rem;
+    padding-block: 1rem;
+}
+
+.modal-footer-inner {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .modal-footer button {
