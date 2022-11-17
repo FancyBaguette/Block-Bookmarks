@@ -399,7 +399,7 @@ MEDIA QUERIES
         min-width: 85%;
     }
 
-    .root {
+    .webpage {
         width: 90%;
     }
 
@@ -411,7 +411,7 @@ MEDIA QUERIES
 
 @media (max-width: 450px) {
 
-    .root {
+    .webpage {
         width: 98%;
     }
 
