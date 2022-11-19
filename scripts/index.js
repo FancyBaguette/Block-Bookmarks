@@ -215,22 +215,6 @@ function loadAltIcon(e) {
     }
 }
 
-// function loadAltIcon(e) {
-//     if (document.documentElement.className === 'dark-theme') {
-//         e.src = "./images/desktop-icon-white.svg";
-//     } else {
-//         e.src = "./images/desktop-icon-black.svg"
-//     }
-// }
-
-// function loadAltIcon(e) {
-//     if (document.documentElement.className === 'dark-theme') {
-//         e.src = "./images/desktop-icon-white.svg";
-//     } else {
-//         e.src = "./images/desktop-icon-black.svg"
-//     }
-// }
-
 function getFavicon(url) {
     return new URL(`https://${url}`).href + "/favicon.ico";
 }
