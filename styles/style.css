@@ -33,6 +33,10 @@ VARIABLES & THEMES
 GENERAL
 ================== */
 
+html {
+    font-size: 18px;
+}
+
 body {
     background-color: var(--clr-body-bg);
     color: var(--clr-fg);
