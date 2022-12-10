@@ -93,6 +93,7 @@ function setAccentColor() {
 document.addEventListener('DOMContentLoaded', () => {
     setTheme();
     setAccentColor();
+    accentColorPicker.value = localStorage.getItem('blockBookmarksAccentColor');
 });
 
 
@@ -216,7 +217,7 @@ function loadAltIcon(e) {
 }
 
 function getFavicon(url) {
-    return new URL(`https://${url}`).href + "/favicon.ico";
+    return new URL(`https://${url}`).href + "favicon.ico";
 }
 
 function renderBookmarks() {
