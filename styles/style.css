@@ -98,7 +98,7 @@ LAYOUT
     min-height: 5rem;
     border-bottom-left-radius: 100vmax;
     border-bottom-right-radius: 100vmax;
-    padding-inline: 2rem;
+    padding: 0 2rem;
 }
 
 .site-header-buttons-container {
@@ -194,8 +194,7 @@ LAYOUT
 }
 
 .bookmarks-list-item {
-    padding-block: 1rem;
-    padding-inline: .5rem;
+    padding: 1rem .5rem;
     display: flex;
     justify-content: space-between;
     gap: .5rem;
@@ -225,8 +224,7 @@ LAYOUT
 .bookmarks-list-item-remove-btn {
     min-width: 112px;
     border-radius: 5px;
-    padding-block: .5em;
-    padding-inline: 1em;
+    padding: .5em 1em;
     border: 0;
     background-color: var(--clr-modal-contrast-bg);
     color: var(--clr-fg);
@@ -288,7 +286,7 @@ LAYOUT
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block-start: 2rem;
+    padding-top: 2rem;
 }
 
 .modal-header .modal-close-btn {
@@ -304,13 +302,13 @@ LAYOUT
 .modal-content {
     max-height: 300px;
     overflow-y: auto;
-    padding-block: 2rem;
+    padding: 2rem 0;
     /* Margin block is set so that the scrollbar doesn't stick to the main close button and the footer */
-    margin-block: .5rem;
+    margin: .5rem auto;
 }
 
 .modal-section:not(.modal-section:nth-child(1)) {
-    padding-block-start: 1rem;
+    padding-top: 1rem;
     border-top: 2px solid var(--clr-modal-contrast-bg);
 }
 
@@ -324,8 +322,7 @@ LAYOUT
     color: var(--clr-fg);
     border: 1px solid var(--clr-modal-input-border);
     border-radius: 15px;
-    padding-inline: .7em;
-    padding-block: .3em;
+    padding: .3em .7em;
     max-height: 40px;
     background-color: var(--clr-modal-contrast-bg);
 }
@@ -341,7 +338,7 @@ LAYOUT
 
 .modal-footer {
     background-color: var(--clr-modal-contrast-bg);
-    padding-block: 1rem;
+    padding: 1rem 0;
 }
 
 .modal-footer-inner {
@@ -379,7 +376,7 @@ LAYOUT
 /* Modal specific styles */
 
 .app-settings-form {
-    padding-block: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
 }
